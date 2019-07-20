@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 28
@@ -16,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.orient.padtemplate.data.dao'
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
@@ -25,4 +31,68 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // RecyclerView
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    // 卡片布局
+    implementation 'com.android.support:cardview-v7:28.0.0'
+
+    // 图片显示
+    implementation 'com.jieWang:PhotoPagerView:1.0.5'
+
+    // 黄油刀
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterKniferVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKniferVersion"
+
+    // Rxjava
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
+
+    // RxAndroid
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okHttpVersion"
+
+    // dagger 2
+    implementation 'com.google.dagger:dagger:2.14.1'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.14.1"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+
+    // GreenDao
+    implementation "org.greenrobot:greendao:$rootProject.ext.greenDaoVersion"
+    implementation "org.greenrobot:greendao-generator:$rootProject.ext.greenDaoVersion"
+
+    // SweetDialog
+    implementation "com.github.f0ris.sweetalert:library:$rootProject.ext.sweetVersion"
+
+    // qiujuer控件的版本
+    implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
+    implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
+    implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+
+    // EventBus
+    api "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
+
+    // 炸裂的浮动按钮
+    implementation "com.nightonke:boommenu:$rootProject.ext.boomVersion"
+
+    // lottie动画
+    implementation "com.airbnb.android:lottie:$rootProject.ext.lottieVersion"
+
+    // 时间选择器控件
+    api "com.contrarywind:Android-PickerView:$rootProject.ext.timeDiaogVersion"
+    // 下拉刷新的库
+    //implementation "com.github.Aspsine:SwipeToLoadLayout:$rootProject.ext.refreshVersion"
+
+    // 二维码库
+    implementation "cn.bingoogolapple:bga-qrcode-zbar:${zxing_version}"
+
+    // 角标
+    implementation "q.rorbin:badgeview:$rootProject.ext.badgeVersion"
 }

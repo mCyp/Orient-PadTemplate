@@ -8,7 +8,7 @@
             <id />
           </State>
           <State>
-            <id>Abstraction issuesJava</id>
+            <id>AccessibilityLintAndroid</id>
           </State>
           <State>
             <id>Android</id>
@@ -17,28 +17,22 @@
             <id>Assignment issuesJava</id>
           </State>
           <State>
-            <id>Bitwise operation issuesJava</id>
+            <id>Bidirectional TextInternationalizationLintAndroid</id>
           </State>
           <State>
-            <id>Class metricsJava</id>
+            <id>C/C++</id>
+          </State>
+          <State>
+            <id>Chrome OSCorrectnessLintAndroid</id>
           </State>
           <State>
             <id>Class structureJava</id>
           </State>
           <State>
-            <id>Cloning issuesJava</id>
-          </State>
-          <State>
-            <id>Code maturity issuesJava</id>
-          </State>
-          <State>
             <id>Code style issuesJava</id>
           </State>
           <State>
-            <id>Compiler issuesJava</id>
-          </State>
-          <State>
-            <id>Concurrency annotation issuesJava</id>
+            <id>Control flow issuesGroovy</id>
           </State>
           <State>
             <id>Control flow issuesJava</id>
@@ -47,7 +41,13 @@
             <id>CorrectnessLintAndroid</id>
           </State>
           <State>
+            <id>Data flow analysisC/C++</id>
+          </State>
+          <State>
             <id>Data flow issuesJava</id>
+          </State>
+          <State>
+            <id>Declaration redundancyGroovy</id>
           </State>
           <State>
             <id>Declaration redundancyJava</id>
@@ -56,22 +56,16 @@
             <id>Dependency issuesJava</id>
           </State>
           <State>
-            <id>Encapsulation issuesJava</id>
+            <id>Error handlingGroovy</id>
           </State>
           <State>
             <id>Error handlingJava</id>
           </State>
           <State>
-            <id>Finalization issuesJava</id>
-          </State>
-          <State>
-            <id>GPath inspectionsGroovy</id>
-          </State>
-          <State>
             <id>General</id>
           </State>
           <State>
-            <id>GeneralJava</id>
+            <id>GeneralC/C++</id>
           </State>
           <State>
             <id>Google Cloud Endpoints</id>
@@ -80,19 +74,22 @@
             <id>Groovy</id>
           </State>
           <State>
-            <id>ImportsJava</id>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>IconsUsabilityLintAndroid</id>
           </State>
           <State>
             <id>Inheritance issuesJava</id>
           </State>
           <State>
-            <id>Initialization issuesJava</id>
-          </State>
-          <State>
-            <id>Internationalization issuesJava</id>
+            <id>InternationalizationLintAndroid</id>
           </State>
           <State>
             <id>J2ME issuesJava</id>
+          </State>
+          <State>
+            <id>JSON</id>
           </State>
           <State>
             <id>JUnit issuesJava</id>
@@ -104,13 +101,7 @@
             <id>Java 5Java language level migration aidsJava</id>
           </State>
           <State>
-            <id>Java 7Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java 8Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Java interop issuesKotlin</id>
+            <id>Java 9Java language level migration aidsJava</id>
           </State>
           <State>
             <id>Java language level issuesJava</id>
@@ -119,46 +110,34 @@
             <id>Java language level migration aidsJava</id>
           </State>
           <State>
-            <id>JavaBeans issuesJava</id>
-          </State>
-          <State>
-            <id>Javadoc issuesJava</id>
-          </State>
-          <State>
             <id>Kotlin</id>
           </State>
           <State>
-            <id>Language Injection</id>
+            <id>Kotlin Android</id>
           </State>
           <State>
             <id>LintAndroid</id>
           </State>
           <State>
+            <id>LintLintAndroid</id>
+          </State>
+          <State>
             <id>Logging issuesJava</id>
-          </State>
-          <State>
-            <id>Manifest</id>
-          </State>
-          <State>
-            <id>Memory issuesJava</id>
           </State>
           <State>
             <id>MessagesCorrectnessLintAndroid</id>
           </State>
           <State>
-            <id>Method metricsJava</id>
-          </State>
-          <State>
             <id>Modularization issuesJava</id>
-          </State>
-          <State>
-            <id>Naming ConventionsGroovy</id>
           </State>
           <State>
             <id>Naming conventionsJava</id>
           </State>
           <State>
             <id>Numeric issuesJava</id>
+          </State>
+          <State>
+            <id>Other problemsKotlin</id>
           </State>
           <State>
             <id>Packaging issuesJava</id>
@@ -168,9 +147,6 @@
           </State>
           <State>
             <id>PerformanceLintAndroid</id>
-          </State>
-          <State>
-            <id>Portability issuesJava</id>
           </State>
           <State>
             <id>Potentially confusing code constructsGroovy</id>
@@ -188,10 +164,19 @@
             <id>Properties Files</id>
           </State>
           <State>
-            <id>Properties FilesJava</id>
+            <id>Redundant constructsKotlin</id>
+          </State>
+          <State>
+            <id>Reflective access issuesJava</id>
+          </State>
+          <State>
+            <id>RegExp</id>
           </State>
           <State>
             <id>Resource management issuesJava</id>
+          </State>
+          <State>
+            <id>RoomAndroid</id>
           </State>
           <State>
             <id>Security issuesJava</id>
@@ -206,9 +191,6 @@
             <id>Style issuesKotlin</id>
           </State>
           <State>
-            <id>StyleGroovy</id>
-          </State>
-          <State>
             <id>TestNGJava</id>
           </State>
           <State>
@@ -216,6 +198,12 @@
           </State>
           <State>
             <id>Threading issuesJava</id>
+          </State>
+          <State>
+            <id>Type checksC/C++</id>
+          </State>
+          <State>
+            <id>TypographyUsabilityLintAndroid</id>
           </State>
           <State>
             <id>UsabilityLintAndroid</id>
@@ -227,14 +215,9 @@
             <id>Visibility issuesJava</id>
           </State>
           <State>
-            <id>toString() issuesJava</id>
+            <id>XML</id>
           </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
   </component>

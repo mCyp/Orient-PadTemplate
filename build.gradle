@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
-        
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,4 +24,75 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    // 黄油刀版本
+    butterKniferVersion = '8.8.1'
+
+    // Rxjava版本
+    rxjavaVersion = '2.2.1'
+
+    // RxAndroid版本
+    rxAndroidVersion = '2.1.0'
+
+    // retrofit版本
+    retrofitVersion = '2.4.0'
+
+    // glide版本
+    glideVersion = '3.7.0'
+
+    // dagger版本
+    daggerVersion = '2.7'
+
+    // RxLifecycle版本
+    rxLifeVersion = '2.2.2'
+
+    // GreenDao版本
+    greenDaoVersion = '3.2.2'
+
+    // SweetDialog版本
+    sweetVersion = '1.5.1'
+
+    // okHttp版本
+    okHttpVersion = '3.10.0'
+
+    // qiujue资源包的版本
+    geniusVersion = '2.0.1'
+
+    // 炸裂的菜单栏版本
+    boomVersion = '2.1.1'
+
+    // 压缩转码的版本
+    lameVersion = "1.0.0"
+
+    // 空气面板的版本
+    airpanelVersion = "1.1.0"
+
+    // 图片展示库的版本
+    photoViewVersion = '1.2.6'
+
+    // 时间选择器控件版本
+    timeDiaogVersion = '4.1.8'
+
+    // EventBus的版本
+    eventBusVersion = '3.0.0'
+
+    // lottie版本
+    lottieVersion = '2.7.0'
+
+    // 拍二维码的版本
+    zxing_version = '1.3.6'
+
+    // 分页库的版本
+    pagingVersion = '1.0.1'
+
+    // 上拉刷新控件
+    refreshVersion = '1.0.4'
+
+    // 角标版本
+    badgeVersion = '1.1.3'
+
+    // 权限请求的版本
+    rxPermissionVersion = '0.10.2'
 }
