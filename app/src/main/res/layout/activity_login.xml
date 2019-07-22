@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".ui.activity.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Orient-Pad模板管理终端"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_title_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <net.qiujuer.genius.ui.widget.EditText
+        android:id="@+id/et_account"
+        style="@style/MainCommonUi"
+        android:layout_marginBottom="@dimen/len_20"
+        android:gravity="start|center_vertical"
+        android:hint="账号"
+        app:layout_constraintBottom_toTopOf="@+id/et_pwd"
+        app:layout_constraintRight_toLeftOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="MissingConstraints" />
+
+    <net.qiujuer.genius.ui.widget.EditText
+        android:id="@+id/et_pwd"
+        style="@style/MainCommonUi"
+        android:layout_marginBottom="@dimen/len_40"
+        android:gravity="start|center_vertical"
+        android:hint="密码"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintRight_toLeftOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/et_account"
+        tools:ignore="MissingConstraints" />
+
+    <net.qiujuer.genius.ui.widget.Button
+        android:id="@+id/btn_login"
+        style="@style/MainCommonUi"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="@color/white"
+        app:gTouchColor="@color/black_alpha_48"
+        app:gTouchEffect="ripple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/et_pwd"
+        tools:ignore="MissingConstraints" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/login_bg_iv_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/line"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+         />
+
+</android.support.constraint.ConstraintLayout>
