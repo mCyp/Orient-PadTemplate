@@ -1,4 +1,4 @@
-package com.orient.padtemplate.injection.module;
+package com.orient.padtemplate.di.module;
 
 import android.content.Context;
 

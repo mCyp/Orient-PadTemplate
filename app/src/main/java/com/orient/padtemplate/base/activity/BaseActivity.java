@@ -3,14 +3,20 @@ package com.orient.padtemplate.base.activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 import com.orient.padtemplate.common.AppManager;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * 抽象的基础的活动
@@ -19,10 +25,11 @@ import butterknife.Unbinder;
  * Created on 2019/7/23.
  */
 @SuppressWarnings("unused")
-public abstract class AbstractBaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     AppManager appManager;
     private Unbinder unbinder;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,20 +39,12 @@ public abstract class AbstractBaseActivity extends AppCompatActivity {
         initWindows();
         if (initArgs(getIntent().getExtras())) {
             setContentView(getLayoutId());
-            initInjection();
             initWidget();
             initData();
             appManager.addActivity(this);
         } else {
             finish();
         }
-    }
-
-    /**
-     * Dagger 2 进入初始化
-     */
-    protected void initInjection() {
-
     }
 
     /**

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PadTemplate</string>
+
+    <string name="prompt_empty">暂时还没有数据～</string>
+    <string name="prompt_error">这边有错误发生了!</string>
+    <string name="prompt_loading">加载中…</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

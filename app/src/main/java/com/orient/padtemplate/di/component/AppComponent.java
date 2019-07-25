@@ -1,16 +1,17 @@
-package com.orient.padtemplate.injection.component;
+package com.orient.padtemplate.di.component;
 
 import android.content.Context;
 
 import com.orient.padtemplate.base.app.App;
 import com.orient.padtemplate.core.data.dao.DaoSession;
-import com.orient.padtemplate.injection.module.AppModule;
+import com.orient.padtemplate.di.module.AbstractAllActivityModule;
+import com.orient.padtemplate.di.module.AbstractAllFragmentModule;
+import com.orient.padtemplate.di.module.AppModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
-import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
@@ -21,6 +22,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
         AndroidInjectionModule.class
         , AndroidSupportInjectionModule.class
+        , AbstractAllActivityModule.class
+        , AbstractAllFragmentModule.class
         , AppModule.class
 })
 public interface AppComponent {

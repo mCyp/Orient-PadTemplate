@@ -4,6 +4,7 @@
     package="com.orient.padtemplate">
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
     <application
         android:name=".base.app.App"
         android:allowBackup="true"
@@ -13,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+        <activity android:name=".ui.activity.ModuleActivity"></activity>
         <activity android:name=".ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

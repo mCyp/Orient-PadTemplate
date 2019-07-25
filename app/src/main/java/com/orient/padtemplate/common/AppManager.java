@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.orient.padtemplate.widget.PlaceHolderView;
+
 import java.util.Stack;
 
 /**
@@ -15,7 +17,10 @@ import java.util.Stack;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class AppManager {
 
+    // 占位布局
+    private PlaceHolderView mPlaceHolderView;
     private static AppManager instance;
+    // 活动的栈
     private Stack<Activity> activityStack = new Stack<>();
 
     public static AppManager getInstance(){
