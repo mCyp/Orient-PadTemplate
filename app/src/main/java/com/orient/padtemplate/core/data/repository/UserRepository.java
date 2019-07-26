@@ -23,7 +23,7 @@ public class UserRepository {
     /**
      * 登录查询
      *
-     * @return User
+     * @return Wang
      */
     public User login(String account,String password){
         return userDao.queryBuilder()
@@ -34,7 +34,7 @@ public class UserRepository {
     /**
      * 插入一个用户
      *
-     * @param user User
+     * @param user Wang
      */
     public void insertUser(User user){
         userDao.insertOrReplace(user);

@@ -7,6 +7,7 @@ import com.orient.padtemplate.core.data.dao.DaoSession;
 import com.orient.padtemplate.di.module.AbstractAllActivityModule;
 import com.orient.padtemplate.di.module.AbstractAllFragmentModule;
 import com.orient.padtemplate.di.module.AppModule;
+import com.orient.padtemplate.di.module.TestFragmentModule;
 
 import javax.inject.Singleton;
 
@@ -25,6 +26,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         , AbstractAllActivityModule.class
         , AbstractAllFragmentModule.class
         , AppModule.class
+        , TestFragmentModule.class
 })
 public interface AppComponent {
 

@@ -1,10 +1,6 @@
 package com.orient.padtemplate.di.module;
 
-import com.orient.padtemplate.base.fragment.BaseMvpFragment;
-import com.orient.padtemplate.di.component.BaseActivityComponent;
 import com.orient.padtemplate.di.component.BaseFragmentComponent;
-import com.orient.padtemplate.di.scope.ActivityScope;
-import com.orient.padtemplate.ui.activity.LoginActivity;
 import com.orient.padtemplate.ui.fragment.TestFragment;
 
 import dagger.Module;

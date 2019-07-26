@@ -14,10 +14,13 @@ import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.contract.presenter.TestPresenter;
 import com.orient.padtemplate.contract.view.TestView;
 import com.orient.padtemplate.core.data.db.User;
+import com.orient.padtemplate.di.scope.Wang;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import dagger.android.AndroidInjection;
+import dagger.android.support.AndroidSupportInjection;
 
 /**
  * create an instance of this fragment.
@@ -28,24 +31,26 @@ public class TestFragment extends BaseMvpFragment<TestPresenter>
     @BindView(R.id.tv_content)
     TextView mContent;
 
-  /*  @Inject
-    User user;*/
+    @Inject
+    User user;
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_test;
     }
 
+
+
     @Override
     protected void initData() {
         super.initData();
-
+        AndroidSupportInjection.inject(this);
         //mPresenter.test();
-        //mContent.setText("User：" + user.getName() + "，account：" + user.getAccount());
+        mContent.setText("Wang：" + user.getName() + "，account：" + user.getAccount());
     }
 
     @Override
     public void onTestResult(User user) {
-        mContent.setText("User：" + user.getName() + "，account：" + user.getAccount());
+        mContent.setText("Wang：" + user.getName() + "，account：" + user.getAccount());
     }
 }
