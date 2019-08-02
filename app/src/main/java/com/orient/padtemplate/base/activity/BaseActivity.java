@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import com.orient.padtemplate.common.AppManager;
 
@@ -99,6 +100,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             unbinder.unbind();
             unbinder = null;
         }
+    }
+
+    protected void showToast(String str){
+        Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
     }
 
     /**

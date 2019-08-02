@@ -8,7 +8,6 @@ import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseMvpActivity;
 import com.orient.padtemplate.contract.presenter.LoginPresenter;
 import com.orient.padtemplate.contract.view.LoginView;
-import com.orient.padtemplate.utils.GlideUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

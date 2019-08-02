@@ -167,4 +167,13 @@
         <item name="android:layout_marginEnd">@dimen/len_20</item>
     </style>
 
+    <style name="CommonToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_ui_big_size</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">@dimen/len_4</item>
+        <item name="android:outlineProvider">background</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
 </resources>

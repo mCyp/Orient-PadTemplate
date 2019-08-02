@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
     greendao {
         schemaVersion 1
         daoPackage 'com.orient.padtemplate.core.data.dao'
@@ -95,9 +99,12 @@ dependencies {
 
     // 二维码库
     implementation "cn.bingoogolapple:bga-qrcode-zbar:$rootProject.ext.zxingVersion"
+    implementation "cn.bingoogolapple:bga-qrcode-zxing:$rootProject.ext.zxingVersion"
 
     // 角标
     implementation "q.rorbin:badgeview:$rootProject.ext.badgeVersion"
+
+    implementation "me.jessyan:autosize:$rootProject.ext.autoVersion"
 
     // UI库
     //implementation "com.qmuiteam:qmui:$rootProject.ext.qUIVersion"

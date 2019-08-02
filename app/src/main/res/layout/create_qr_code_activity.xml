@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.CreateQrCodeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CommonToolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/common_ic_back"
+        app:title="二维码管理"
+        tools:targetApi="lollipop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/len_20">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="设备连接："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <TextView
+                android:id="@+id/tv_device"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_72"
+                android:layout_marginEnd="@dimen/len_20"
+                android:background="@drawable/common_tv_frame"
+                android:drawableStart="@drawable/create_qr_code_ic_printer"
+                android:gravity="center"
+                android:padding="@dimen/len_4"
+                android:paddingStart="@dimen/len_20"
+                android:paddingEnd="@dimen/len_20"
+                android:text="还未扫到设备信息"
+                android:textSize="@dimen/text_middle_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="名称："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_72"
+                android:layout_marginEnd="@dimen/len_20"
+                android:background="@drawable/common_et_bg"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/len_4"
+                android:paddingStart="@dimen/len_20"
+                android:paddingEnd="@dimen/len_20"
+                android:textSize="@dimen/text_middle_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="编号："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <EditText
+                android:id="@+id/et_serial_num"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_72"
+                android:layout_marginEnd="@dimen/len_20"
+                android:background="@drawable/common_et_bg"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/len_4"
+                android:paddingStart="@dimen/len_20"
+                android:paddingEnd="@dimen/len_20"
+                android:textSize="@dimen/text_middle_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="负责人："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <EditText
+                android:id="@+id/et_person"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_72"
+                android:layout_marginEnd="@dimen/len_20"
+                android:background="@drawable/common_et_bg"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/len_4"
+                android:paddingStart="@dimen/len_20"
+                android:paddingEnd="@dimen/len_20"
+                android:textSize="@dimen/text_middle_size" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_preview"
+                    android:layout_width="300dp"
+                    android:layout_height="@dimen/len_72"
+                    android:layout_gravity="center"
+                    android:background="@drawable/common_btn_ripple_table"
+                    android:text="预览"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_middle_size" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/len_20"
+            android:background="@color/grey_300" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="预览："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/mPrintView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@drawable/create_qr_code_lay_code_bg">
+
+                <TextView
+                    android:id="@+id/tv_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/len_40"
+                    android:layout_marginStart="@dimen/len_10"
+                    android:gravity="center"
+                    android:padding="@dimen/len_4"
+                    android:text="设备信息"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_large_size"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/len_2"
+                    android:layout_marginStart="@dimen/len_10"
+                    android:layout_marginEnd="@dimen/len_10"
+                    android:background="@color/textPrimary"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_tag" />
+
+
+                <ImageView
+                    android:id="@+id/iv_code"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/len_10"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toTopOf="@+id/line2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+                <TextView
+                    android:id="@+id/tv_qr_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/len_4"
+                    android:layout_marginEnd="@dimen/len_10"
+                    android:gravity="start"
+                    android:padding="@dimen/len_2"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_small_size"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_qr_serial_num"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_code"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line1"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="名称：阿波罗远望号" />
+
+                <TextView
+                    android:id="@+id/tv_qr_serial_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:padding="@dimen/len_2"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_small_size"
+                    app:layout_constraintBottom_toTopOf="@+id/line2"
+                    app:layout_constraintLeft_toLeftOf="@+id/tv_qr_name"
+                    app:layout_constraintRight_toRightOf="@+id/tv_qr_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_qr_name"
+                    tools:text="编号：1211" />
+
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/len_2"
+                    android:layout_marginStart="@dimen/len_10"
+                    android:layout_marginEnd="@dimen/len_10"
+                    android:background="@color/textPrimary"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_qr_person"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_qr_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/len_40"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/len_10"
+                    android:gravity="center"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_middle_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="王杰" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_40"
+                android:layout_marginTop="@dimen/len_10"
+                android:layout_marginBottom="@dimen/len_10"
+                android:gravity="start|center_vertical"
+                android:text="打印数量："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/len_72"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/iv_delete"
+                    android:layout_width="@dimen/len_44"
+                    android:layout_height="@dimen/len_44"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/len_20"
+                    android:background="@drawable/common_btn_delete_round"
+                    android:padding="@dimen/len_10"
+                    android:src="@drawable/common_ic_delete" />
+
+                <EditText
+                    android:id="@+id/et_num"
+                    android:layout_width="@dimen/len_72"
+                    android:layout_height="@dimen/len_44"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/len_20"
+                    android:background="@drawable/common_et_bg"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="@dimen/len_4"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/text_big_size" />
+
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="@dimen/len_44"
+                    android:layout_height="@dimen/len_44"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/len_20"
+                    android:background="@drawable/common_btn_add_round"
+                    android:padding="@dimen/len_10"
+                    android:src="@drawable/common_ic_add" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_print"
+                    android:layout_width="300dp"
+                    android:layout_height="@dimen/len_72"
+                    android:layout_gravity="center"
+                    android:background="@drawable/common_btn_ripple_table"
+                    android:text="打印"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_middle_size" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

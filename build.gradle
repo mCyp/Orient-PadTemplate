@@ -98,4 +98,7 @@ ext {
 
     // 腾讯UI库
     qUIVersion = '1.0.6'
+
+    // 自动适配版本
+    autoVersion = '1.1.2'
 }

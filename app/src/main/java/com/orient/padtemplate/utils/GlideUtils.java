@@ -10,25 +10,21 @@ import com.bumptech.glide.request.target.SimpleTarget;
 
 /**
  * Glide工具类
- *
+ * <p>
  * Author WangJie
  * Created on 2019/7/26.
  */
 public class GlideUtils {
 
-    public static void loadUrl(String url){
+    public static void loadUrl(String url) {
 
     }
 
-    public static void loadResource(Context context, int resource, final ImageView imageView){
+    public static void loadResource(Context context, int resource, final ImageView imageView) {
         Glide.with(context).load(resource)
+                .asBitmap()
                 .centerCrop()
-                .into(new SimpleTarget<GlideDrawable>() {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        imageView.setImageDrawable(resource);
-                    }
-                });
+                .into(imageView);
     }
 
 }
