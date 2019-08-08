@@ -176,4 +176,36 @@
         <item name="titleTextColor">@color/white</item>
     </style>
 
+    <style name="WrapWrap.TextViewNormalStyle">
+        <item name="android:padding">6dp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">@dimen/len_4</item>
+    </style>
+
+    <style name="WrapWrap.TextViewNormalStyle.Normal">
+        <item name="android:textSize">@dimen/text_middle_size</item>
+    </style>
+
+    <style name="WrapWrap.TextViewNormalStyle.Larger">
+        <item name="android:textSize">@dimen/text_big_size</item>
+    </style>
+
+    <style name="WrapWrap.TextViewNormalStyle.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="TabLayoutStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/white</item>
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">1dp</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textSize">@dimen/text_large_size</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
 </resources>

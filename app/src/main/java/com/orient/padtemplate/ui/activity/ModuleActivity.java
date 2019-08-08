@@ -95,7 +95,10 @@ public class ModuleActivity extends BaseActivity {
                         startActivityForResult(intent, QR_CODE);
                         break;
                     }
-                    case "生成二维码":break;
+                    case "生成二维码": {
+                        startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));
+                        break;
+                    }
                     case "列表":break;
                     case "表格":break;
                     case "弹出框":break;

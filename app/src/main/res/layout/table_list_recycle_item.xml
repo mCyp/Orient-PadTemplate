@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/left_background"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/len_4"
+        android:elevation="@dimen/len_10"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:outlineProvider="background"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/len_6"
+        app:cardElevation="@dimen/len_2"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingLeft="@dimen/len_32"
+        app:contentPaddingRight="@dimen/len_32"
+        app:contentPaddingTop="@dimen/len_10"
+        app:contentPaddingBottom="@dimen/len_10"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="@dimen/font_24"
+                    tools:text="一号" />
+
+                <ImageView
+                    android:id="@+id/iv_state"
+                    android:layout_width="@dimen/len_52"
+                    android:layout_height="@dimen/len_52"
+                    android:contentDescription="@string/app_name"
+                    android:padding="@dimen/len_6"
+                    android:src="@drawable/common_state_wait"
+                     />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_300" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/len_10"
+                android:layout_marginTop="@dimen/len_32"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/len_24"
+                    android:layout_height="@dimen/len_24"
+                    android:src="@drawable/table_list_ic_item"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/len_32"
+                    android:gravity="start"
+                    android:text="[待检查]"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/len_10"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/len_24"
+                    android:layout_height="@dimen/len_24"
+                    android:src="@drawable/table_list_ic_item"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_marginStart="@dimen/len_32"
+                    android:layout_marginEnd="@dimen/len_10"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp"
+                    tools:text="2017年12月26日" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

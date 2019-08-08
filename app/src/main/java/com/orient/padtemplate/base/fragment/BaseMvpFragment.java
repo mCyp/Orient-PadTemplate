@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 /**
  * MVP模式的Fragment
- *
+ * <p>
  * Author WangJie
  * Created on 2019/7/25.
  */
@@ -28,6 +28,7 @@ public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragm
 
         if (mPresenter != null) {
             mPresenter.setView(this);
+            mPresenter.setLifecycleProvider(this);
         }
     }
 

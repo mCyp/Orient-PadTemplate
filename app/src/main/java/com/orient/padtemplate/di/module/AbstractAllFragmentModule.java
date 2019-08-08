@@ -1,6 +1,8 @@
 package com.orient.padtemplate.di.module;
 
 import com.orient.padtemplate.di.component.BaseFragmentComponent;
+import com.orient.padtemplate.ui.fragment.FlowFragment;
+import com.orient.padtemplate.ui.fragment.TaskFragment;
 import com.orient.padtemplate.ui.fragment.TestFragment;
 
 import dagger.Module;
@@ -17,4 +19,10 @@ public abstract class AbstractAllFragmentModule {
 
     @ContributesAndroidInjector(modules = TestFragmentModule.class)
     abstract TestFragment contributesTestFragmentInjector();
+
+    @ContributesAndroidInjector(modules = FlowFragment.class)
+    abstract FlowFragment contributesFlowFragmentInjector();
+
+    @ContributesAndroidInjector(modules = TaskFragment.class)
+    abstract TaskFragment contributesTaskFragmentInjector();
 }

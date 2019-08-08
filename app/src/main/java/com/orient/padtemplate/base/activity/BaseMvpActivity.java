@@ -46,6 +46,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
 
         if (mPresenter != null) {
             mPresenter.setView(this);
+            mPresenter.setLifecycleProvider(this);
         }
     }
 

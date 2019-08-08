@@ -3,6 +3,7 @@ package com.orient.padtemplate.base.contract.presenter;
 import android.content.Context;
 
 import com.orient.padtemplate.base.contract.view.BaseView;
+import com.trello.rxlifecycle2.LifecycleProvider;
 
 import javax.inject.Inject;
 
@@ -20,11 +21,17 @@ public class BasePresenter<T extends BaseView> {
     @Inject
     protected Context mContext;
 
+    protected LifecycleProvider mLifecycleProvider;
+
     public BasePresenter() {
     }
 
     public void setView(T view){
         this.mView = view;
+    }
+
+    public void setLifecycleProvider(LifecycleProvider lifecycleProvider){
+        this.mLifecycleProvider = lifecycleProvider;
     }
 
     public void removeView(){

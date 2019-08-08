@@ -10,4 +10,9 @@ import com.orient.padtemplate.base.contract.view.BaseView;
  */
 public interface LoginView extends BaseView {
     void onLoginResult(boolean result);
+
+    /**
+     * 第一次初始化的结果
+     */
+    void onFirstInitResult(boolean result);
 }

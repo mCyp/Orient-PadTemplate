@@ -6,14 +6,16 @@ import android.widget.ImageView;
 
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseMvpActivity;
+import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.presenter.LoginPresenter;
 import com.orient.padtemplate.contract.view.LoginView;
+import com.orient.padtemplate.utils.AppPrefUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseMvpActivity<LoginPresenter>
-    implements LoginView {
+        implements LoginView {
 
     @BindView(R.id.iv_bg)
     ImageView mBgIv;
@@ -29,27 +31,34 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter>
     protected void initWidget() {
         super.initWidget();
 
-        //GlideUtils.loadResource(this,R.drawable.login_iv_bg,mBgIv);
     }
 
     @Override
     protected void initData() {
         super.initData();
 
-        /*Wang user = new Wang("1","wangjie","188","188");
-        mPresenter.saveUser(user);*/
+        // 第一次打开App的时候初始化数据
+        boolean isFirstInit = AppPrefUtils.getBoolean(Common.Constant.QR_REQUEST_CODE);
+        if (isFirstInit) {
+            // TODO 展示加载框
+            mPresenter.onFirstInit();
+        }
     }
 
     @Override
     public void onLoginResult(boolean result) {
-        Log.e("login","login11111");
+        Log.e("login", "login11111");
+    }
+
+    @Override
+    public void onFirstInitResult(boolean result) {
+        if(result)
+            AppPrefUtils.putBoolean(Common.Constant.QR_REQUEST_CODE, true);
     }
 
     @OnClick(R.id.btn_login)
-    public void login(){
-        //mPresenter.login("188","188");
-
-        Intent intent = new Intent(this,ModuleActivity.class);
+    public void login() {
+        Intent intent = new Intent(this, ModuleActivity.class);
         startActivity(intent);
     }
 }

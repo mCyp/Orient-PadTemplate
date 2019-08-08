@@ -3,21 +3,14 @@ package com.orient.padtemplate.base.activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import com.orient.padtemplate.common.AppManager;
-
-import javax.inject.Inject;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * 抽象的基础的活动
@@ -26,7 +19,7 @@ import dagger.android.support.HasSupportFragmentInjector;
  * Created on 2019/7/23.
  */
 @SuppressWarnings("unused")
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
 
     AppManager appManager;
     private Unbinder unbinder;
@@ -110,22 +103,19 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 控制界面
      */
     protected void controlKeyBoardLayout(final View root, final View scrollView) {
-        root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                Rect rect = new Rect();
-                // 获取视图的可视区域
-                root.getWindowVisibleDisplayFrame(rect);
-                int rootInvisibleHeight = root.getRootView().getHeight() - rect.bottom;
-                if (rootInvisibleHeight > 100) {
-                    // 获取要滚动的坐标的位置
-                    int[] location = new int[2];
-                    scrollView.getLocationInWindow(location);
-                    int scrollHeight = (location[1] + scrollView.getHeight()) - rect.bottom;
-                    scrollView.scrollTo(0, scrollHeight);
-                } else {
-                    scrollView.scrollTo(0, 0);
-                }
+        root.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            Rect rect = new Rect();
+            // 获取视图的可视区域
+            root.getWindowVisibleDisplayFrame(rect);
+            int rootInvisibleHeight = root.getRootView().getHeight() - rect.bottom;
+            if (rootInvisibleHeight > 100) {
+                // 获取要滚动的坐标的位置
+                int[] location = new int[2];
+                scrollView.getLocationInWindow(location);
+                int scrollHeight = (location[1] + scrollView.getHeight()) - rect.bottom;
+                scrollView.scrollTo(0, scrollHeight);
+            } else {
+                scrollView.scrollTo(0, 0);
             }
         });
     }

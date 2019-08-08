@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.ListActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CommonToolbar"
+        app:navigationIcon="@drawable/common_ic_back" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tby_title"
+        style="@style/TabLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="92dp"
+        android:layout_height="@dimen/len_72"
+        android:layout_marginStart="@dimen/len_20"
+        android:layout_marginEnd="@dimen/len_20"
+        android:background="@drawable/list_white_bg"
+        app:tabGravity="fill"
+        app:tabMaxWidth="0dp"
+        app:tabTextAppearance="@style/CustomStyle" />
+
+    <com.orient.padtemplate.widget.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/len_20"
+        android:layout_marginTop="174dp"
+        android:layout_marginEnd="@dimen/len_20"
+        android:layout_marginBottom="@dimen/len_20"
+        android:background="@drawable/list_white_bg" />
+
+</FrameLayout>

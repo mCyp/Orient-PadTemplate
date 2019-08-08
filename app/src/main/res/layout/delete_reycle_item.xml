@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/len_72">
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/item_inside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/WrapWrap.TextViewNormalStyle.Larger"
+                android:layout_marginTop="@dimen/len_6"
+                android:textStyle="bold"
+                tools:text="标题" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/WrapWrap.TextViewNormalStyle.Normal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/len_6"
+                android:textColor="@color/textSecond"
+                tools:text="18-10-12 10:10:10" />
+
+            <TextView
+                android:id="@+id/tv_state"
+                style="@style/WrapWrap.TextViewNormalStyle.Normal"
+                android:layout_alignBottom="@+id/tv_time"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/textSecond"
+                android:textStyle="italic"
+                tools:text="王浩" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/grey_300" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/item_delete"
+            android:layout_width="@dimen/len_100"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/red_400"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_large_size" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.orient.padtemplate.ui.activity;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orient.padtemplate.R;
@@ -37,6 +38,9 @@ public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
     TextView mSerialNumTv;
     @BindView(R.id.tv_qr_person)
     TextView mPersonTv;
+    @BindView(R.id.iv_code)
+    ImageView mCodeIv;
+
 
     @Override
     protected int getLayoutId() {
@@ -45,7 +49,7 @@ public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
 
     @Override
     public void onCreateQrCodeResult(Bitmap result) {
-
+        mCodeIv.setImageBitmap(result);
     }
 
     // 预览方法
@@ -66,8 +70,8 @@ public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
         String id = UUID.randomUUID().toString();
         mPresenter.createQrCode(id);
 
-        mNameTv.setText("名称："+name);
-        mSerialNumTv.setText("序列号："+serialNum);
-        mPersonTv.setText("负责人："+person);
+        mNameTv.setText("名称：" + name);
+        mSerialNumTv.setText("序列号：" + serialNum);
+        mPersonTv.setText("负责人：" + person);
     }
 }
