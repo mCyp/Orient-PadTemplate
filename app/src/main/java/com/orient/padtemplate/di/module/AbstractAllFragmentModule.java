@@ -1,6 +1,7 @@
 package com.orient.padtemplate.di.module;
 
 import com.orient.padtemplate.di.component.BaseFragmentComponent;
+import com.orient.padtemplate.ui.fragment.DeleteFragment;
 import com.orient.padtemplate.ui.fragment.FlowFragment;
 import com.orient.padtemplate.ui.fragment.TaskFragment;
 import com.orient.padtemplate.ui.fragment.TestFragment;
@@ -20,9 +21,12 @@ public abstract class AbstractAllFragmentModule {
     @ContributesAndroidInjector(modules = TestFragmentModule.class)
     abstract TestFragment contributesTestFragmentInjector();
 
-    @ContributesAndroidInjector(modules = FlowFragment.class)
+    @ContributesAndroidInjector(modules = FlowFragmentModule.class)
     abstract FlowFragment contributesFlowFragmentInjector();
 
-    @ContributesAndroidInjector(modules = TaskFragment.class)
+    @ContributesAndroidInjector(modules = TaskFragmentModule.class)
     abstract TaskFragment contributesTaskFragmentInjector();
+
+    @ContributesAndroidInjector(modules = DeleteFragmentModule.class)
+    abstract DeleteFragment contributesDeleteFragmentInjector();
 }

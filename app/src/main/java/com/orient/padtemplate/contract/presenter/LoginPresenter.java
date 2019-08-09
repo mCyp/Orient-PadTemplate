@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.orient.padtemplate.base.contract.presenter.BasePresenter;
 import com.orient.padtemplate.base.rx.BaseObserver;
+import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.view.LoginView;
 import com.orient.padtemplate.core.data.db.Flow;
 import com.orient.padtemplate.core.data.db.Table;
@@ -15,6 +16,7 @@ import com.orient.padtemplate.core.data.model.TableModel;
 import com.orient.padtemplate.core.data.model.TaskModel;
 import com.orient.padtemplate.core.data.repository.TaskRepository;
 import com.orient.padtemplate.core.data.repository.UserRepository;
+import com.orient.padtemplate.utils.AppPrefUtils;
 import com.orient.padtemplate.utils.FileUtils;
 import com.orient.padtemplate.utils.RxUtils;
 
@@ -87,6 +89,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         User user = new User("1", "jie", "wang", "123456");
         userRepository.insertUser(user);
 
+        AppPrefUtils.putString(Common.Constant.SP_USER_ID,"1");
+
         // 初始化任务
         TaskModel taskModel = FileUtils.copyTaskModel(mContext);
         Task task = taskModel.toTask();
@@ -96,10 +100,11 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             Flow flow = flowModel.toFlow(task.getId());
             taskRepository.insertFlow(flow);
             List<TableModel> tableModels = flowModel.getTableModels();
-            for (TableModel tableModel : tableModels) {
-                Table table = tableModel.toTable(flow.getId(), user.getId());
-                taskRepository.insertTable(table);
-            }
+            if (tableModels != null)
+                for (TableModel tableModel : tableModels) {
+                    Table table = tableModel.toTable(flow.getId(), user.getId());
+                    taskRepository.insertTable(table);
+                }
         }
 
         // 初始化结束

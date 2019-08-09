@@ -47,7 +47,7 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
     protected void initWidget(View root) {
         super.initWidget(root);
 
-        mRecyclerView.setBackgroundColor(Color.parseColor("#738ffe"));
+        //mRecyclerView.setBackgroundColor(Color.parseColor("#9575cd"));
 
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new RecyclerAdapter<Flow>() {
@@ -91,16 +91,17 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
                 .setItemInterVal(130)//dp
                 .setItemPaddingLeft(10)//default value equals to item interval value
                 .setItemPaddingRight(10)//default value equals to item interval value
-                .setDotColor(Color.WHITE)
-                .setDotRadius(6)//dp
+                .setDotColor(Color.parseColor("#673AB7"))
+                .setDotRadius(8)//dp
                 .setDotPaddingTop(2)
                 .setDotInItemOrientationCenter(true)//set true if you want the dot align center
-                .setLineColor(Color.RED)//the color of vertical line
-                .setLineWidth(1)//dp
-                .setBottomStyle(DotItemDecoration.STYLE_RESOURCE)
+                .setLineWidth(2)//dp
+                .setEndText("结束")
+                .setTextSize(14)
+                .setTextColor(Color.parseColor("#673AB7"))
                 //.setBottomRes(R.drawable.ic_ma_1)
                 .setDotPaddingText(2)//dp.The distance between the last dot and the end text
-                .setBottomDistance(UIUtils.dip2px(20))//you can add a distance to make bottom line longer
+                .setBottomDistance(UIUtils.dip2px(30))//you can add a distance to make bottom line longer
                 .create();
     }
 

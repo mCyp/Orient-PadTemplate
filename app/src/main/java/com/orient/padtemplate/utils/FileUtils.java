@@ -29,7 +29,7 @@ public class FileUtils {
             AssetManager assetManager = context.getAssets();
             String fileNames[] = context.getAssets().list("");
             for (String fileName : fileNames) {
-                if (fileName.contains("cells.json")) {
+                if (fileName.contains("task.json")) {
                     InputStream inputStream = assetManager.open(fileName);
                     JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
                     Object object = new Gson().fromJson(reader, new TypeToken<TaskModel>() {

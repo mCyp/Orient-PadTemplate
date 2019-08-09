@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.orient.padtemplate.R;
+import com.orient.padtemplate.base.activity.BaseActivity;
 import com.orient.padtemplate.ui.adapter.ListAdapter;
 import com.orient.padtemplate.widget.NoScrollViewPager;
 
 import butterknife.BindView;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends BaseActivity {
 
-    public static final String[] titles = {"故障记录", "更换记录", "损耗记录"};
+    public static final String[] titles = {"流程列表", "表格列表", "删除列表"};
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -23,9 +24,13 @@ public class ListActivity extends AppCompatActivity {
     NoScrollViewPager mViewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_activity);
+    protected int getLayoutId() {
+        return R.layout.list_activity;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
 
         mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         mViewPager.setNoScroll(true);

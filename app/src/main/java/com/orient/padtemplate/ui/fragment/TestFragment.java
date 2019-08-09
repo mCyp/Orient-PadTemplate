@@ -22,7 +22,7 @@ public class TestFragment extends BaseMvpFragment<TestPresenter>
     @BindView(R.id.tv_content)
     TextView mContent;
 
-    @Inject
+    //@Inject
     User user;
 
     @Override
@@ -35,7 +35,6 @@ public class TestFragment extends BaseMvpFragment<TestPresenter>
     @Override
     protected void initData() {
         super.initData();
-        AndroidSupportInjection.inject(this);
         //mPresenter.test();
         mContent.setText("Wang：" + user.getName() + "，account：" + user.getAccount());
     }

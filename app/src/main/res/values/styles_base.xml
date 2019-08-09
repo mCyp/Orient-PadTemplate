@@ -199,7 +199,7 @@
     <style name="TabLayoutStyle" parent="Base.Widget.Design.TabLayout">
         <item name="tabBackground">@color/white</item>
         <item name="tabIndicatorColor">@color/colorPrimary</item>
-        <item name="tabIndicatorHeight">1dp</item>
+        <item name="tabIndicatorHeight">2dp</item>
         <item name="tabSelectedTextColor">@color/colorPrimary</item>
     </style>
 

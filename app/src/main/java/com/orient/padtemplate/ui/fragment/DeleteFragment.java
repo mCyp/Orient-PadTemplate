@@ -43,7 +43,7 @@ public class DeleteFragment extends BaseMvpFragment<FlowPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.common_fragment;
+        return R.layout.delete_fragment;
     }
 
     @Override

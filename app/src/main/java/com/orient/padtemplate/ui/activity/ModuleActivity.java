@@ -86,12 +86,14 @@ public class ModuleActivity extends BaseActivity {
             public void onItemClick(RecyclerAdapter.ViewHolder<ModuleItem> holder, ModuleItem moduleItem) {
                 super.onItemClick(holder, moduleItem);
 
-                switch (moduleItem.name){
-                    case "表格流程":break;
-                    case "事件流程":break;
-                    case "扫码":{
+                switch (moduleItem.name) {
+                    case "表格流程":
+                        break;
+                    case "事件流程":
+                        break;
+                    case "扫码": {
                         Intent intent = new Intent(ModuleActivity.this, QrCodeActivity.class);
-                        intent.putExtra(Common.Constant.QR_REQUEST_CODE,QR_CODE);
+                        intent.putExtra(Common.Constant.QR_REQUEST_CODE, QR_CODE);
                         startActivityForResult(intent, QR_CODE);
                         break;
                     }
@@ -99,10 +101,16 @@ public class ModuleActivity extends BaseActivity {
                         startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));
                         break;
                     }
-                    case "列表":break;
-                    case "表格":break;
-                    case "弹出框":break;
-                    default:break;
+                    case "列表": {
+                        startActivity(new Intent(ModuleActivity.this, ListActivity.class));
+                        break;
+                    }
+                    case "表格":
+                        break;
+                    case "弹出框":
+                        break;
+                    default:
+                        break;
                 }
             }
         });

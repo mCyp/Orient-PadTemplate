@@ -8,15 +8,14 @@
     android:background="@drawable/task_item_right_bg"
     android:minHeight="@dimen/len_84">
 
-
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/len_20"
         android:padding="@dimen/len_4"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_big_size"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/len_20"
         android:padding="@dimen/len_4"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintRight_toRightOf="@+id/tv_name"
         tools:text="完成进度2/3" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:padding="@dimen/len_4"
-        android:textColor="@color/black"
+        android:textColor="@color/white_alpha_192"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_process"

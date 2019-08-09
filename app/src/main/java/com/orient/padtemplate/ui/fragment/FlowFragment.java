@@ -38,14 +38,14 @@ public class FlowFragment extends BaseMvpFragment<FlowPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.common_fragment;
+        return R.layout.flow_fragment;
     }
 
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mAdapter = new RecyclerAdapter<Table>() {
             @Override
             public ViewHolder<Table> onCreateViewHolder(View root, int viewType) {
