@@ -91,13 +91,13 @@ public class ModuleActivity extends BaseActivity {
                         break;
                     case "事件流程":
                         break;
-                    case "扫码": {
+                    case "二维码": {
                         Intent intent = new Intent(ModuleActivity.this, QrCodeActivity.class);
                         intent.putExtra(Common.Constant.QR_REQUEST_CODE, QR_CODE);
                         startActivityForResult(intent, QR_CODE);
                         break;
                     }
-                    case "生成二维码": {
+                    case "相机": {
                         startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));
                         break;
                     }
@@ -107,8 +107,10 @@ public class ModuleActivity extends BaseActivity {
                     }
                     case "表格":
                         break;
-                    case "弹出框":
+                    case "弹出框":{
+                        startActivity(new Intent(ModuleActivity.this, DialogActivity.class));
                         break;
+                    }
                     default:
                         break;
                 }
@@ -124,8 +126,8 @@ public class ModuleActivity extends BaseActivity {
         List<ModuleItem> list = new LinkedList<>();
         list.add(new ModuleItem("表格流程", R.drawable.module_item_head_1));
         list.add(new ModuleItem("事件流程", R.drawable.module_item_head_2));
-        list.add(new ModuleItem("扫码", R.drawable.module_item_head_3));
-        list.add(new ModuleItem("生成二维码", R.drawable.module_item_head_4));
+        list.add(new ModuleItem("二维码", R.drawable.module_item_head_3));
+        list.add(new ModuleItem("相机", R.drawable.module_item_head_4));
         list.add(new ModuleItem("列表", R.drawable.module_item_head_5));
         list.add(new ModuleItem("表格", R.drawable.module_item_head_6));
         list.add(new ModuleItem("弹出框", R.drawable.module_item_head_7));

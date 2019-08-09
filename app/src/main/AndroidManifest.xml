@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".ui.activity.ListActivity"></activity>
+        <activity android:name=".ui.activity.DialogActivity"></activity>
+        <activity android:name=".ui.activity.ListActivity" />
         <activity android:name=".ui.activity.CreateQrCodeActivity" />
         <activity android:name=".ui.activity.QrCodeActivity" />
 
