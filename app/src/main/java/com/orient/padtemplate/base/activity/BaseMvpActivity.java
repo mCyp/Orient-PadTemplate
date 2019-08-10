@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 
 import com.orient.padtemplate.base.contract.view.BaseView;
 import com.orient.padtemplate.base.contract.presenter.BasePresenter;
-import com.orient.padtemplate.widget.PlaceHolderView;
+import com.orient.padtemplate.widget.placeholder.PlaceHolderView;
 
 import javax.inject.Inject;
 

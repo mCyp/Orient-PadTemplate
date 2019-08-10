@@ -14,7 +14,7 @@ import com.orient.padtemplate.contract.presenter.FlowPresenter;
 import com.orient.padtemplate.contract.view.FlowView;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.utils.DateUtils;
-import com.orient.padtemplate.widget.EmptyView;
+import com.orient.padtemplate.widget.placeholder.EmptyView;
 
 import java.util.Date;
 import java.util.List;

@@ -1,22 +1,17 @@
 package com.orient.padtemplate.ui.fragment;
 
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.base.recyclerview.DeleteRecyclerAdapter;
-import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
 import com.orient.padtemplate.contract.presenter.FlowPresenter;
 import com.orient.padtemplate.contract.view.FlowView;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.utils.DateUtils;
-import com.orient.padtemplate.widget.EmptyView;
+import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.delete.DeleteRecyclerView;
 import com.orient.padtemplate.widget.delete.OnItemClickListener;
 

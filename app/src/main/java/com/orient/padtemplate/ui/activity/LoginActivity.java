@@ -38,7 +38,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter>
         super.initData();
 
         // 第一次打开App的时候初始化数据
-        boolean isFirstInit = AppPrefUtils.getBoolean(Common.Constant.QR_REQUEST_CODE);
+        boolean isFirstInit = AppPrefUtils.getBoolean(Common.Constant.IS_FIRST_INIT);
         if (isFirstInit) {
             // TODO 展示加载框
             mPresenter.onFirstInit();
@@ -53,7 +53,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter>
     @Override
     public void onFirstInitResult(boolean result) {
         if(result)
-            AppPrefUtils.putBoolean(Common.Constant.QR_REQUEST_CODE, true);
+            AppPrefUtils.putBoolean(Common.Constant.IS_FIRST_INIT, true);
     }
 
     @OnClick(R.id.btn_login)

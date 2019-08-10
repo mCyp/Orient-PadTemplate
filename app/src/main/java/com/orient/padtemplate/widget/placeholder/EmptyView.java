@@ -1,4 +1,4 @@
-package com.orient.padtemplate.widget;
+package com.orient.padtemplate.widget.placeholder;
 
 import android.content.Context;
 import android.content.res.TypedArray;

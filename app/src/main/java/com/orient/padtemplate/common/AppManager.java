@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
-import com.orient.padtemplate.widget.PlaceHolderView;
+import com.orient.padtemplate.widget.placeholder.PlaceHolderView;
 
 import java.util.Stack;
 

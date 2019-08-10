@@ -15,7 +15,7 @@ import com.orient.padtemplate.contract.view.TaskView;
 import com.orient.padtemplate.core.data.db.Flow;
 import com.orient.padtemplate.utils.DateUtils;
 import com.orient.padtemplate.utils.UIUtils;
-import com.orient.padtemplate.widget.EmptyView;
+import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.itemdecoration.DotItemDecoration;
 
 import java.util.Date;

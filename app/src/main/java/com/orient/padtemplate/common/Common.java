@@ -15,6 +15,9 @@ public class Common {
         String SP_USER_ID = "SP_USER_ID";
         String SP_USER_NAME = "SP_USER_NAME";
 
+        // NetDialog
+        String SP_IP_ADDRESS = "SP_IP_ADDRESS";
+
 
     }
 }
