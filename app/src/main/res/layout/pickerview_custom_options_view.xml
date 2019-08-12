@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_dialog_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/len_52"
+        android:background="@drawable/common_dialog_top"
+        app:title="签名"
+        app:titleTextColor="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/optionspicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/options1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/options2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.contrarywind.view.WheelView
+            android:id="@+id/options3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/len_52"
+        android:background="@drawable/common_dialog_bottom"
+        android:orientation="horizontal">
+
+        <net.qiujuer.genius.ui.widget.Button
+            android:id="@+id/mBtnNo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/textPrimary"
+            android:background="@drawable/common_dialog_bottom_left"
+            android:textSize="@dimen/font_16"
+            app:gTouchColor="@color/black_alpha_32"
+            app:gTouchEffect="press"
+            app:gTouchCornerRadius="@dimen/len_6"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent" />
+
+
+        <net.qiujuer.genius.ui.widget.Button
+            android:id="@+id/mBtnYes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/common_dialog_bottom_right"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            app:gTouchColor="@color/black_alpha_32"
+            app:gTouchEffect="press"
+            app:gTouchCornerRadius="@dimen/len_6"
+            />
+    </LinearLayout>
+
+</LinearLayout>

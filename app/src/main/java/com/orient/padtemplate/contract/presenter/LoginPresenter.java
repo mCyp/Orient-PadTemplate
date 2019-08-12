@@ -7,6 +7,7 @@ import com.orient.padtemplate.base.contract.presenter.BasePresenter;
 import com.orient.padtemplate.base.rx.BaseObserver;
 import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.view.LoginView;
+import com.orient.padtemplate.core.data.db.Cell;
 import com.orient.padtemplate.core.data.db.Flow;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.core.data.db.Task;
@@ -18,6 +19,7 @@ import com.orient.padtemplate.core.data.repository.TaskRepository;
 import com.orient.padtemplate.core.data.repository.UserRepository;
 import com.orient.padtemplate.utils.AppPrefUtils;
 import com.orient.padtemplate.utils.FileUtils;
+import com.orient.padtemplate.utils.IdUtils;
 import com.orient.padtemplate.utils.RxUtils;
 
 import java.util.List;
@@ -89,7 +91,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         User user = new User("1", "jie", "wang", "123456");
         userRepository.insertUser(user);
 
-        AppPrefUtils.putString(Common.Constant.SP_USER_ID,"1");
+        AppPrefUtils.putString(Common.Constant.SP_USER_ID, "1");
 
         // 初始化任务
         TaskModel taskModel = FileUtils.copyTaskModel(mContext);
@@ -105,6 +107,20 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     Table table = tableModel.toTable(flow.getId(), user.getId());
                     taskRepository.insertTable(table);
                 }
+        }
+
+        // 插入表格
+        List<Cell> cells = FileUtils.copyCell(mContext);
+        for (Cell cell : cells) {
+            cell.setId(IdUtils.createId());
+            cell.setTableId("1-1-1");
+            taskRepository.insertCell(cell);
+        }
+        cells = FileUtils.copyCell(mContext);
+        for (Cell cell : cells) {
+            cell.setId(IdUtils.createId());
+            cell.setTableId("1-1-2");
+            taskRepository.insertCell(cell);
         }
 
         // 初始化结束

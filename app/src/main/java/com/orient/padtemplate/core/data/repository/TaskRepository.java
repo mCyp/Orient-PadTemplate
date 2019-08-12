@@ -1,9 +1,11 @@
 package com.orient.padtemplate.core.data.repository;
 
+import com.orient.padtemplate.core.data.dao.CellDao;
 import com.orient.padtemplate.core.data.dao.DaoSession;
 import com.orient.padtemplate.core.data.dao.FlowDao;
 import com.orient.padtemplate.core.data.dao.TableDao;
 import com.orient.padtemplate.core.data.dao.TaskDao;
+import com.orient.padtemplate.core.data.db.Cell;
 import com.orient.padtemplate.core.data.db.Flow;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.core.data.db.Task;
@@ -27,12 +29,14 @@ public class TaskRepository extends BaseRepository{
     private TaskDao taskDao;
     private FlowDao flowDao;
     private TableDao tableDao;
+    private CellDao cellDao;
 
     @Inject
     public TaskRepository(DaoSession daoSession) {
         this.taskDao = daoSession.getTaskDao();
         this.flowDao = daoSession.getFlowDao();
         this.tableDao = daoSession.getTableDao();
+        this.cellDao = daoSession.getCellDao();
     }
 
     /********* Insert **********/
@@ -56,6 +60,13 @@ public class TaskRepository extends BaseRepository{
      */
     public void insertTable(Table table){
         tableDao.insertOrReplace(table);
+    }
+
+    /**
+     * 插入一个单元格
+     */
+    public void insertCell(Cell cell){
+        cellDao.insertOrReplace(cell);
     }
 
     /********* search **********/

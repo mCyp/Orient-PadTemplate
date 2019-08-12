@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import com.orient.padtemplate.core.data.db.Cell;
 import com.orient.padtemplate.core.data.model.TaskModel;
 
 import java.io.IOException;
@@ -37,6 +38,32 @@ public class FileUtils {
                     TaskModel card = (TaskModel)object;
                     reader.close();
                     return card;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取单元格
+     *
+     * @return List<Cell>
+     */
+    public static List<Cell> copyCell(Context context) {
+        try {
+            AssetManager assetManager = context.getAssets();
+            String fileNames[] = context.getAssets().list("");
+            for (String fileName : fileNames) {
+                if (fileName.contains("cells.json")) {
+                    InputStream inputStream = assetManager.open(fileName);
+                    JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
+                    Object object = new Gson().fromJson(reader, new TypeToken<List<Cell>>() {
+                    }.getType());
+                    List<Cell> data = (List<Cell>)object;
+                    reader.close();
+                    return data;
                 }
             }
         } catch (IOException e) {

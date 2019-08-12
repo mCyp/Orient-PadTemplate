@@ -1,0 +1,394 @@
+[
+  {
+    "row": 0,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "标签",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "姓名",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "编辑项",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 3,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "检查项",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "日期项",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "选择项",
+    "isTitle": true
+  },
+  {
+    "row": 0,
+    "column": 6,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "1",
+    "isTitle": false
+  },
+  {
+    "row": 1,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "怎么说说到哪都是大就是来得及啊是假的是假的是多久啊打开手机睡觉啦设计的拉丝金属",
+    "isTitle": false
+  },
+  {
+    "row": 1,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "无敌",
+    "isTitle": false
+  },
+  {
+    "row": 1,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "大小",
+    "isTitle": false
+  },
+  {
+    "row": 1,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "日期",
+    "isTitle": false
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 1,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "2",
+    "isTitle": false
+  },
+  {
+    "row": 2,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "小明",
+    "isTitle": false
+  },
+  {
+    "row": 2,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "一个",
+    "isTitle": false
+  },
+  {
+    "row": 2,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 2,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 2,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "2",
+    "isTitle": false
+  },
+  {
+    "row": 3,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "小明",
+    "isTitle": false
+  },
+  {
+    "row": 3,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "一个",
+    "isTitle": false
+  },
+  {
+    "row": 3,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 3,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 3,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "2",
+    "isTitle": false
+  },
+  {
+    "row": 4,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "小明",
+    "isTitle": false
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "一个",
+    "isTitle": false
+  },
+  {
+    "row": 4,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 4,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 5,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "2",
+    "isTitle": false
+  },
+  {
+    "row": 5,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "小明",
+    "isTitle": false
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "一个",
+    "isTitle": false
+  },
+  {
+    "row": 5,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 5,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  },
+  {
+    "row": 6,
+    "column": 0,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "2",
+    "isTitle": false
+  },
+  {
+    "row": 6,
+    "column": 1,
+    "type": 1,
+    "inputValue": "",
+    "labelName": "小明",
+    "isTitle": false
+  },
+  {
+    "row": 6,
+    "column": 2,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "一个",
+    "isTitle": false
+  },
+  {
+    "row": 6,
+    "column": 3,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 6,
+    "column": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 6,
+    "column": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": true
+  },
+  {
+    "row": 6,
+    "column": 6,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": true
+  }
+]
