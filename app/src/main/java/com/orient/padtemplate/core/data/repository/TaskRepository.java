@@ -20,12 +20,12 @@ import io.reactivex.Observable;
 
 /**
  * 任务仓库
- *
+ * <p>
  * Author WangJie
  * Created on 2019/8/8.
  */
 @SuppressWarnings("ALL")
-public class TaskRepository extends BaseRepository{
+public class TaskRepository extends BaseRepository {
     private TaskDao taskDao;
     private FlowDao flowDao;
     private TableDao tableDao;
@@ -44,28 +44,28 @@ public class TaskRepository extends BaseRepository{
     /**
      * 插入任务
      */
-    public void insertTask(Task task){
+    public void insertTask(Task task) {
         taskDao.insertOrReplace(task);
     }
 
     /**
      * 插入流程
      */
-    public void insertFlow(Flow flow){
+    public void insertFlow(Flow flow) {
         flowDao.insertOrReplace(flow);
     }
 
     /**
      * 插入表格
      */
-    public void insertTable(Table table){
+    public void insertTable(Table table) {
         tableDao.insertOrReplace(table);
     }
 
     /**
      * 插入一个单元格
      */
-    public void insertCell(Cell cell){
+    public void insertCell(Cell cell) {
         cellDao.insertOrReplace(cell);
     }
 
@@ -74,16 +74,26 @@ public class TaskRepository extends BaseRepository{
     /**
      * 通过流程Id和用户Id查询表格
      */
-    public Observable<List<Table>> searchTableByFlowIdAndUserIdRx(String flowId, String userId){
+    public Observable<List<Table>> searchTableByFlowIdAndUserIdRx(String flowId, String userId) {
         QueryBuilder<Table> queryBuilder = tableDao.queryBuilder()
                 .where(TableDao.Properties.UserId.eq(userId), TableDao.Properties.FlowId.eq(flowId));
         return queryListToTx(queryBuilder);
     }
 
     /**
+     * 根据表格获取单元格
+     */
+    public List<Cell> searchCellsByTableId(String tableId, boolean isTitle) {
+        QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
+                .where(CellDao.Properties.TableId.eq(tableId), CellDao.Properties.IsTitle.eq(isTitle))
+                .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col);
+        return queryBuilder.list();
+    }
+
+    /**
      * 通过任务Id查询流程
      */
-    public Observable<List<Flow>> searchFlowByFlowIdAndUserIdRx(String taskId){
+    public Observable<List<Flow>> searchFlowByFlowIdAndUserIdRx(String taskId) {
         QueryBuilder<Flow> queryBuilder = flowDao.queryBuilder()
                 .where(FlowDao.Properties.TaskId.eq(taskId));
         return queryListToTx(queryBuilder);

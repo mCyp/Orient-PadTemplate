@@ -6,6 +6,6 @@
         android:color="@color/grey_300"
         />
     <solid
-        android:color="@color/colorPrimary"
+        android:color="#8F75BB"
         />
 </shape>

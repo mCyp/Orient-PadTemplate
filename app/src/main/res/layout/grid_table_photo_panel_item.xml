@@ -23,6 +23,7 @@
         android:id="@+id/iv_photo"
         android:layout_width="@dimen/len_56"
         android:layout_height="@dimen/len_56"
+        android:padding="@dimen/len_8"
         android:src="@drawable/common_ic_photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/iv_camera"

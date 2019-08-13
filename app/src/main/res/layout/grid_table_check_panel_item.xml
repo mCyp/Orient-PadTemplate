@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lay"
     android:layout_width="200dp"
     android:layout_height="100dp"
-    android:background="@drawable/grid_table_cell_panel_item_bg"
-    android:orientation="horizontal">
+    android:background="@drawable/grid_table_cell_panel_item_bg">
 
     <net.qiujuer.genius.ui.widget.CheckBox
         android:id="@+id/cb_content"
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="@dimen/len_4"
-        android:text="@string/btn_yes" />
+        android:text="@string/btn_yes"
+        app:gMarkColor="@color/colorPrimary" />
 
 </FrameLayout>

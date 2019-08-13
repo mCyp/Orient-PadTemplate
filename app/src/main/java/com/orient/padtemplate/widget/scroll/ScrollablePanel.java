@@ -63,10 +63,11 @@ public class ScrollablePanel extends FrameLayout {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     boolean isToBottom = recyclerView.canScrollVertically(1);
-                    boolean  isToTop = recyclerView.canScrollVertically(-1);
-                    scrollToTopOrBottom.onScrollToTopOrBottom(isToTop,isToBottom);
+                    boolean isToTop = recyclerView.canScrollVertically(-1);
+                    if (scrollToTopOrBottom != null)
+                        scrollToTopOrBottom.onScrollToTopOrBottom(isToTop, isToBottom);
                 }
             }
         });
@@ -75,7 +76,7 @@ public class ScrollablePanel extends FrameLayout {
     /*
         添加是否可以上划或者下滑的事件
      */
-    public void addScrollToTopOrBottomListener(ScrollToTopOrBottom listener){
+    public void addScrollToTopOrBottomListener(ScrollToTopOrBottom listener) {
         this.scrollToTopOrBottom = listener;
     }
 
@@ -313,11 +314,9 @@ public class ScrollablePanel extends FrameLayout {
     /*
         滑动到底部到顶部
      */
-    public interface ScrollToTopOrBottom{
+    public interface ScrollToTopOrBottom {
         void onScrollToTopOrBottom(boolean isToTop, boolean isToBottom);
     }
-
-
 
 
 }

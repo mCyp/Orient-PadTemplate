@@ -3,6 +3,8 @@ package com.orient.padtemplate.di.module;
 import com.orient.padtemplate.di.component.BaseFragmentComponent;
 import com.orient.padtemplate.ui.fragment.DeleteFragment;
 import com.orient.padtemplate.ui.fragment.FlowFragment;
+import com.orient.padtemplate.ui.fragment.GridTableFragment;
+import com.orient.padtemplate.ui.fragment.LinearTableFragment;
 import com.orient.padtemplate.ui.fragment.TaskFragment;
 import com.orient.padtemplate.ui.fragment.TestFragment;
 
@@ -29,4 +31,10 @@ public abstract class AbstractAllFragmentModule {
 
     @ContributesAndroidInjector(modules = DeleteFragmentModule.class)
     abstract DeleteFragment contributesDeleteFragmentInjector();
+
+    @ContributesAndroidInjector(modules = GridTableFragmentModule.class)
+    abstract GridTableFragment contributesGridTableFragmentModuleInjector();
+
+    @ContributesAndroidInjector(modules = LinearTableFragmentModule.class)
+    abstract LinearTableFragment contributesLinearTableFragmentModuleInjector();
 }

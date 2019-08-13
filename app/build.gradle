@@ -43,7 +43,11 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
 
     // 图片显示
-    implementation 'com.jieWang:PhotoPagerView:1.0.7'
+    implementation 'com.jieWang:PhotoPagerView:1.0.8'
+    //implementation "com.github.chrisbanes:PhotoView:$rootProject.ext.photoViewVersion"
+    implementation("com.github.chrisbanes:PhotoView:$rootProject.ext.photoViewVersion") {
+        exclude group: 'com.android.support'
+    }
 
     // 黄油刀
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterKniferVersion"
@@ -90,7 +94,7 @@ dependencies {
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
 
     // 炸裂的浮动按钮
-    implementation "com.nightonke:boommenu:$rootProject.ext.boomVersion"
+    //implementation "com.nightonke:boommenu:$rootProject.ext.boomVersion"
 
     // lottie动画
     implementation "com.airbnb.android:lottie:$rootProject.ext.lottieVersion"

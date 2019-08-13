@@ -4,18 +4,19 @@
     android:id="@+id/lay"
     android:layout_width="200dp"
     android:layout_height="100dp"
-    android:background="@drawable/grid_table_title_panel_item_bg"
     android:layout_gravity="center"
+    android:background="@drawable/grid_table_title_panel_item_bg"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/txt_desc"
+        android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
         android:singleLine="false"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_middle_size" />
 
 </LinearLayout>

@@ -76,7 +76,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     @Override
                     public void onNext(Boolean aBoolean) {
                         super.onNext(aBoolean);
-
+                        AppPrefUtils.putBoolean(Common.Constant.IS_FIRST_INIT, false);
                         mView.onLoginResult(aBoolean);
                     }
                 });

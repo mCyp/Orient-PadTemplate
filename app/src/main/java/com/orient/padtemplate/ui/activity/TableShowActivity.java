@@ -5,14 +5,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseActivity;
-import com.orient.padtemplate.ui.adapter.ListAdapter;
+import com.orient.padtemplate.ui.adapter.TableShowAdapter;
 import com.orient.padtemplate.widget.NoScrollViewPager;
 
 import butterknife.BindView;
 
-public class ListActivity extends BaseActivity {
+public class TableShowActivity extends BaseActivity {
 
-    public static final String[] titles = {"流程列表", "表格列表", "删除列表"};
+    public static final String[] titles = {"网格表格", "线性表格"};
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -37,7 +37,7 @@ public class ListActivity extends BaseActivity {
         }
 
         mTabLayout.setupWithViewPager(mViewPager, true);
-        ListAdapter mAdapter = new ListAdapter(getSupportFragmentManager(), titles);
+        TableShowAdapter mAdapter = new TableShowAdapter(getSupportFragmentManager(), titles);
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));

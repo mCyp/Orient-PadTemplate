@@ -105,9 +105,11 @@ public class ModuleActivity extends BaseActivity {
                         startActivity(new Intent(ModuleActivity.this, ListActivity.class));
                         break;
                     }
-                    case "表格":
+                    case "表格": {
+                        startActivity(new Intent(ModuleActivity.this, TableShowActivity.class));
                         break;
-                    case "弹出框":{
+                    }
+                    case "弹出框": {
                         startActivity(new Intent(ModuleActivity.this, DialogActivity.class));
                         break;
                     }

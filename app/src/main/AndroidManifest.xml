@@ -5,6 +5,9 @@
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 存储权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".base.app.App"
@@ -15,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".ui.activity.DialogActivity"></activity>
+        <activity android:name=".ui.activity.TableShowActivity"></activity>
+        <activity android:name=".ui.activity.DialogActivity" />
         <activity android:name=".ui.activity.ListActivity" />
         <activity android:name=".ui.activity.CreateQrCodeActivity" />
         <activity android:name=".ui.activity.QrCodeActivity" />
