@@ -81,6 +81,15 @@ public class TaskRepository extends BaseRepository {
     }
 
     /**
+     * 通过任务Id查询流程
+     */
+    public Observable<List<Flow>> searchFlowByFlowIdAndUserIdRx(String taskId) {
+        QueryBuilder<Flow> queryBuilder = flowDao.queryBuilder()
+                .where(FlowDao.Properties.TaskId.eq(taskId));
+        return queryListToTx(queryBuilder);
+    }
+
+    /**
      * 根据表格获取单元格
      */
     public List<Cell> searchCellsByTableId(String tableId, boolean isTitle) {
@@ -91,11 +100,32 @@ public class TaskRepository extends BaseRepository {
     }
 
     /**
-     * 通过任务Id查询流程
+     * 获取初始加载的数量
      */
-    public Observable<List<Flow>> searchFlowByFlowIdAndUserIdRx(String taskId) {
-        QueryBuilder<Flow> queryBuilder = flowDao.queryBuilder()
-                .where(FlowDao.Properties.TaskId.eq(taskId));
-        return queryListToTx(queryBuilder);
+    public List<Cell> searchCellsByTableId(String tableId, int limitSize) {
+        QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
+                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.IsTitle.eq(false))
+                .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col)
+                .limit(limitSize);
+        return queryBuilder.list();
+    }
+
+    /**
+     * 加载指定行数的Cell
+     */
+    public List<Cell> searchCellByTableInRange(String tableId, int startPage, int endPage) {
+        QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
+                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.Row.between(startPage,endPage))
+                .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col);
+        return queryBuilder.list();
+    }
+
+    /**
+     * 查询指定表格的列的数量
+     */
+    public long countTableCol(String tableId){
+        QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
+                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.IsTitle.eq(true));
+        return queryBuilder.count();
     }
 }

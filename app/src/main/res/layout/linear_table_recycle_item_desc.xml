@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lay_bg"
+    style="@style/TableItemBgStyle">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/ZeroMatch.RecyclerItemHeader"
+        android:gravity="end|center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.3"
+        tools:text="标题：" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/ZeroMatch.TableText"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/len_10"
+        android:paddingEnd="@dimen/len_10"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="我的哈哈哈哈哈哈" />
+
+    <!--<include layout="@layout/recycle_table_divide_line"
+        app:layout_constraintLeft_toRightOf="@+id/tv_title"/>-->
+
+
+</android.support.constraint.ConstraintLayout>

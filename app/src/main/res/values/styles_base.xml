@@ -208,4 +208,25 @@
         <item name="android:textColor">@color/textPrimary</item>
     </style>
 
+    <style name="TableItemBgStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/len_72</item>
+        <item name="android:layout_marginStart">@dimen/len_128</item>
+        <item name="android:layout_marginEnd">@dimen/len_128</item>
+        <item name="android:background">@drawable/common_bg_white</item>
+    </style>
+
+    <style name="ZeroMatch.RecyclerItemHeader">
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textSize">@dimen/text_big_size</item>
+        <item name="android:textColor">@color/textSecond</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">100dp</item>
+    </style>
+
+    <style name="ZeroMatch.TableText">
+        <item name="android:textSize">@dimen/text_big_size</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
 </resources>

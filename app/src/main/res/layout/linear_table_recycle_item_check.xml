@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lay_bg"
+    style="@style/TableItemBgStyle">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/ZeroMatch.RecyclerItemHeader"
+        android:gravity="end|center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.3"
+        tools:text="标题：" />
+
+    <net.qiujuer.genius.ui.widget.CheckBox
+        android:id="@+id/tv_yes"
+        style="@style/ZeroMatch.TableText"
+        android:gravity="start|center_vertical"
+        android:text="是"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintLeft_toRightOf="@+id/tv_title"
+        app:layout_constraintWidth_default="percent"
+        app:gMarkColor="@color/colorPrimary"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <net.qiujuer.genius.ui.widget.CheckBox
+        android:id="@+id/tv_no"
+        style="@style/ZeroMatch.TableText"
+        android:gravity="start|center_vertical"
+        android:layout_marginStart="@dimen/len_52"
+        android:text="否"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintLeft_toRightOf="@+id/tv_yes"
+        app:layout_constraintWidth_default="percent"
+        app:gMarkColor="@color/colorPrimary"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <!--<include layout="@layout/recycle_table_divide_line" />-->
+
+
+</android.support.constraint.ConstraintLayout>

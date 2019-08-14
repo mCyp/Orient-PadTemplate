@@ -55,7 +55,6 @@ dependencies {
 
     // Rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
-
     // RxAndroid
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
 
@@ -93,9 +92,6 @@ dependencies {
     // EventBus
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
 
-    // 炸裂的浮动按钮
-    //implementation "com.nightonke:boommenu:$rootProject.ext.boomVersion"
-
     // lottie动画
     implementation "com.airbnb.android:lottie:$rootProject.ext.lottieVersion"
 
@@ -110,8 +106,13 @@ dependencies {
 
     // 角标
     implementation "q.rorbin:badgeview:$rootProject.ext.badgeVersion"
-
+    // 界面适配
     implementation "me.jessyan:autosize:$rootProject.ext.autoVersion"
+
+    // Paging 库
+    implementation "android.arch.paging:runtime:$rootProject.ext.paging_version"
+    // optional - RxJava support, currently in release candidate
+    implementation "android.arch.paging:rxjava2:$rootProject.ext.paging_version"
 
     // UI库
     //implementation "com.qmuiteam:qmui:$rootProject.ext.qUIVersion"

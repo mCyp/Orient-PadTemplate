@@ -5,9 +5,11 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+
 import com.orient.padtemplate.core.data.dao.DaoSession;
 import com.orient.padtemplate.core.data.dao.TableDao;
 import com.orient.padtemplate.core.data.dao.CellDao;
+import com.orient.padtemplate.widget.suspension.ISuspensionInterface;
 
 /**
  * 单元格
@@ -16,7 +18,7 @@ import com.orient.padtemplate.core.data.dao.CellDao;
  * Created on 2019/8/12.
  */
 @Entity
-public class Cell {
+public class Cell implements ISuspensionInterface {
     // 描述、编辑、检查、日期、选择和照片
     public static final int CELL_DESC = 1;
     public static final int CELL_EDIT = 2;
@@ -45,15 +47,20 @@ public class Cell {
     private String tableId;
     @ToOne(joinProperty = "tableId")
     private Table table;
-    /** Used to resolve relations */
+    /**
+     * Used to resolve relations
+     */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-    /** Used for active entity operations. */
+    /**
+     * Used for active entity operations.
+     */
     @Generated(hash = 1701490087)
     private transient CellDao myDao;
+
     @Generated(hash = 1170138811)
     public Cell(String id, int row, int col, int type, String labelName,
-            String inputValue, boolean isTitle, String path, String tableId) {
+                String inputValue, boolean isTitle, String path, String tableId) {
         this.id = id;
         this.row = row;
         this.col = col;
@@ -64,66 +71,89 @@ public class Cell {
         this.path = path;
         this.tableId = tableId;
     }
+
     @Generated(hash = 739260143)
     public Cell() {
     }
+
     public String getId() {
         return this.id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public int getRow() {
         return this.row;
     }
+
     public void setRow(int row) {
         this.row = row;
     }
+
     public int getCol() {
         return this.col;
     }
+
     public void setCol(int col) {
         this.col = col;
     }
+
     public int getType() {
         return this.type;
     }
+
     public void setType(int type) {
         this.type = type;
     }
+
     public String getLabelName() {
         return this.labelName;
     }
+
     public void setLabelName(String labelName) {
         this.labelName = labelName;
     }
+
     public String getInputValue() {
         return this.inputValue;
     }
+
     public void setInputValue(String inputValue) {
         this.inputValue = inputValue;
     }
+
     public boolean getIsTitle() {
         return this.isTitle;
     }
+
     public void setIsTitle(boolean isTitle) {
         this.isTitle = isTitle;
     }
+
     public String getPath() {
         return this.path;
     }
+
     public void setPath(String path) {
         this.path = path;
     }
+
     public String getTableId() {
         return this.tableId;
     }
+
     public void setTableId(String tableId) {
         this.tableId = tableId;
     }
+
     @Generated(hash = 579284854)
     private transient String table__resolvedKey;
-    /** To-one relationship, resolved on first access. */
+
+    /**
+     * To-one relationship, resolved on first access.
+     */
     @Generated(hash = 2086210944)
     public Table getTable() {
         String __key = this.tableId;
@@ -141,7 +171,10 @@ public class Cell {
         }
         return table;
     }
-    /** called by internal mechanisms, do not call yourself. */
+
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 1666285429)
     public void setTable(Table table) {
         synchronized (this) {
@@ -150,6 +183,7 @@ public class Cell {
             table__resolvedKey = tableId;
         }
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
      * Entity must attached to an entity context.
@@ -161,6 +195,7 @@ public class Cell {
         }
         myDao.delete(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
      * Entity must attached to an entity context.
@@ -172,6 +207,7 @@ public class Cell {
         }
         myDao.refresh(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
      * Entity must attached to an entity context.
@@ -183,7 +219,10 @@ public class Cell {
         }
         myDao.update(this);
     }
-    /** called by internal mechanisms, do not call yourself. */
+
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 1167289043)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
@@ -191,4 +230,13 @@ public class Cell {
     }
 
 
+    @Override
+    public boolean isShowSuspension() {
+        return true;
+    }
+
+    @Override
+    public String getSuspensionTag() {
+        return "第" + Integer.toString(row) + "行";
+    }
 }

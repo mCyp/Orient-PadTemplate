@@ -63,7 +63,6 @@ import q.rorbin.badgeview.QBadgeView;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class GridTableAdapter extends PanelAdapter {
-
     public static final int TYPE_TAKE_PHOTO = 100;
 
     private LayoutInflater mLayoutInflater;
@@ -133,22 +132,22 @@ public class GridTableAdapter extends PanelAdapter {
     @Override
     public int getItemViewType(int row, int column) {
         if (row == 0) {
-            return R.layout.grid_table_title_panel_item;
+            return R.layout.grid_table_panel_item_title;
         } else {
             Cell cell = contents.get((row - 1) * col + column);
             switch (cell.getType()) {
                 case Cell.CELL_DESC:
-                    return R.layout.grid_table_desc_panel_item;
+                    return R.layout.grid_table_panel_item_desc;
                 case Cell.CELL_CHECK:
-                    return R.layout.grid_table_check_panel_item;
+                    return R.layout.grid_table_panel_item_check;
                 case Cell.CELL_EDIT:
-                    return R.layout.grid_table_edit_panel_item;
+                    return R.layout.grid_table_panel_item_edit;
                 case Cell.CELL_DATE:
-                    return R.layout.grid_table_date_panel_item;
+                    return R.layout.grid_table_panel_item_date;
                 case Cell.CELL_SELECTION:
-                    return R.layout.grid_table_selection_panel_item;
+                    return R.layout.grid_table_panel_item_selection;
                 case Cell.CELL_PHOTO:
-                    return R.layout.grid_table_photo_panel_item;
+                    return R.layout.grid_table_panel_item_photo;
                 default:
                     throw new UnsupportedOperationException("不支持的类型！");
             }
@@ -185,24 +184,24 @@ public class GridTableAdapter extends PanelAdapter {
         View root = mLayoutInflater.inflate(viewType, parent, false);
         RecyclerAdapter.ViewHolder<Cell> holder;
         switch (viewType) {
-            case R.layout.grid_table_desc_panel_item:
-            case R.layout.grid_table_title_panel_item:
+            case R.layout.grid_table_panel_item_desc:
+            case R.layout.grid_table_panel_item_title:
                 holder = new DescHolder(root);
                 ((GridTableAdapter.DescHolder) holder).unbinder = ButterKnife.bind(holder, root);
                 break;
-            case R.layout.grid_table_check_panel_item:
+            case R.layout.grid_table_panel_item_check:
                 holder = new CheckHolder(root);
                 ((GridTableAdapter.CheckHolder) holder).unbinder = ButterKnife.bind(holder, root);
                 break;
-            case R.layout.grid_table_edit_panel_item:
+            case R.layout.grid_table_panel_item_edit:
                 holder = new EditHolder(root);
                 ((GridTableAdapter.EditHolder) holder).unbinder = ButterKnife.bind(holder, root);
                 break;
-            case R.layout.grid_table_date_panel_item:
+            case R.layout.grid_table_panel_item_date:
                 holder = new DateHolder(root);
                 ((GridTableAdapter.DateHolder) holder).unbinder = ButterKnife.bind(holder, root);
                 break;
-            case R.layout.grid_table_selection_panel_item:
+            case R.layout.grid_table_panel_item_selection:
                 holder = new SelectionHolder(root);
                 ((GridTableAdapter.SelectionHolder) holder).unbinder = ButterKnife.bind(holder, root);
                 break;
@@ -429,8 +428,6 @@ public class GridTableAdapter extends PanelAdapter {
     class PhotoHolder extends RecyclerAdapter.ViewHolder<Cell>
             implements PhotoObserver {
 
-        // 角标
-        Badge badge;
         @BindView(R.id.iv_camera)
         ImageView mCamera;
         @BindView(R.id.iv_photo)
@@ -439,6 +436,7 @@ public class GridTableAdapter extends PanelAdapter {
         View layout;
 
         private String mPath;
+        private Badge badge;
 
         PhotoHolder(View itemView) {
             super(itemView);

@@ -22,6 +22,7 @@ import com.orient.padtemplate.utils.FileUtils;
 import com.orient.padtemplate.utils.IdUtils;
 import com.orient.padtemplate.utils.RxUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -117,9 +118,15 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             taskRepository.insertCell(cell);
         }
         cells = FileUtils.copyCell(mContext);
+        List<Cell> titles = new LinkedList<>();
         for (Cell cell : cells) {
             cell.setId(IdUtils.createId());
             cell.setTableId("1-1-2");
+            if(cell.getIsTitle()){
+                titles.add(cell);
+            }else {
+                cell.setLabelName(titles.get(cell.getCol()).getLabelName());
+            }
             taskRepository.insertCell(cell);
         }
 
