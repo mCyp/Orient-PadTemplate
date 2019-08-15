@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class DateUtils {
     private static SimpleDateFormat normalFormat = new SimpleDateFormat("MM-dd HH:mm");
+    private static SimpleDateFormat simpleDayFormat = new SimpleDateFormat("MM-dd");
     private static SimpleDateFormat detailFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat dateFormat_ch = new SimpleDateFormat("yyyy年MM月dd日");
@@ -22,6 +23,13 @@ public class DateUtils {
      */
     public static String date2NormalStr(Date date) {
         return normalFormat.format(date);
+    }
+
+    /*
+        通常形式的时间 MM_dd
+     */
+    public static String date2MM_dd(Date date) {
+        return simpleDayFormat.format(date);
     }
 
     /*
@@ -79,7 +87,7 @@ public class DateUtils {
             case 4:
                 return "周五";
             case 5:
-                return "周六年";
+                return "周六";
             default:
                 return "周一";
         }

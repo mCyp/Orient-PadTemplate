@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 分页的数据源
- * <p>
  * Author WangJie
  * Created on 2019/8/14.
  */
@@ -47,7 +46,7 @@ public class CellPageDataSource extends PageKeyedDataSource<Integer, Cell> {
         int startPage = params.key;
         int endPage = params.key + params.requestedLoadSize / singlePageSize;
         List<Cell> cells = mTaskRepository.searchCellByTableInRange(mTableId, startPage, endPage);
-        // TODO 这边是否要加一
-        callback.onResult(cells, endPage);
+        callback.onResult(cells, endPage+1);
     }
+
 }

@@ -21,15 +21,16 @@
         style="@style/ZeroMatch.TableText"
         android:layout_marginTop="@dimen/len_10"
         android:layout_marginBottom="@dimen/len_10"
-        android:background="@drawable/common_btn_ripple_white"
-        android:drawableStart="@drawable/common_ic_camera"
+        android:background="@drawable/common_btn_ripple_white_primary"
+        android:drawableStart="@drawable/common_ic_camera_32"
         android:gravity="center"
         android:paddingStart="@dimen/len_20"
         android:paddingEnd="@dimen/len_20"
         android:text="拍照"
-        android:textColor="@color/white_alpha_176"
-        app:layout_constraintLeft_toRightOf="@+id/tv_title"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintRight_toLeftOf="@+id/tv_photo"
         app:layout_constraintWidth_default="percent"
+        android:layout_marginEnd="@dimen/len_20"
         app:layout_constraintWidth_percent="0.2"
         tools:ignore="MissingConstraints" />
 
@@ -39,17 +40,20 @@
         android:layout_marginStart="@dimen/len_20"
         android:layout_marginTop="@dimen/len_10"
         android:layout_marginBottom="@dimen/len_10"
-        android:background="@drawable/common_btn_ripple_white"
-        android:drawableStart="@drawable/common_ic_photo"
+        android:background="@drawable/common_btn_ripple_white_primary"
+        android:drawableStart="@drawable/common_ic_photo_32"
         android:gravity="center"
         android:paddingStart="@dimen/len_20"
         android:paddingEnd="@dimen/len_20"
         android:text="照片"
-        android:textColor="@color/white_alpha_176"
-        app:layout_constraintLeft_toRightOf="@+id/tv_camera"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/len_20"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.2"
         tools:ignore="MissingConstraints" />
 
-    <!--<include layout="@layout/recycle_table_divide_line" />-->
+    <include layout="@layout/common_linear_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 </android.support.constraint.ConstraintLayout>

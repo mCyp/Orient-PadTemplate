@@ -1,5 +1,6 @@
 package com.orient.padtemplate.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.arch.paging.PagedList;
 import android.content.Intent;
@@ -21,8 +22,6 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
-import com.bigkoo.pickerview.listener.CustomListener;
-import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.orient.padtemplate.R;
@@ -34,13 +33,16 @@ import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.presenter.LinearTablePresenter;
 import com.orient.padtemplate.contract.view.LinearTableView;
 import com.orient.padtemplate.core.data.db.Cell;
+import com.orient.padtemplate.core.data.paging.CellPageDataSource;
 import com.orient.padtemplate.core.data.repository.TaskRepository;
 import com.orient.padtemplate.ui.adapter.GridTableAdapter;
 import com.orient.padtemplate.utils.DateUtils;
 import com.orient.padtemplate.utils.PhotoUtils;
+import com.orient.padtemplate.utils.StringsUtils;
+import com.orient.padtemplate.utils.UIUtils;
+import com.orient.padtemplate.widget.dialog.DetailTextDialog;
 import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.suspension.SuspensionDecoration;
-import com.orient.photopagerview.listener.DeleteListener;
 import com.orient.photopagerview.widget.IPhotoPager;
 import com.orient.photopagerview.widget.PhotoPagerViewProxy;
 
@@ -60,9 +62,12 @@ import q.rorbin.badgeview.QBadgeView;
 
 /**
  * 直线表格布局
- * <p>
+ * 1. 表格布局 RecyclerView
+ * 2. 分页策略 Android Jetpack Paging库
  * create an instance of this fragment.
  */
+@SuppressWarnings("ConstantConditions")
+@SuppressLint("SetTextI18n")
 public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         implements LinearTableView {
 
@@ -75,7 +80,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
 
     private CustomPagedListAdapter<Cell> mAdapter;
     // 当前的列数
-    private boolean isEdit;
+    private boolean isEdit = true;
     private HashMap<String, GridTableAdapter.PhotoObserver> map = new HashMap<>();
     private String takePhotoCellId;
     // 分隔线
@@ -149,6 +154,14 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
     @Override
     public void onLoadCellsResult(PagedList<Cell> cells) {
         if (cells.size() > 0) {
+            mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onItemRangeInserted(int positionStart, int itemCount) {
+                    super.onItemRangeInserted(positionStart, itemCount);
+                    if (mDecoration != null)
+                        mDecoration.setmDatas(mAdapter.getCurrentList().snapshot());
+                }
+            });
             mAdapter.submitList(cells);
             mDecoration = new SuspensionDecoration(getContext(), mAdapter.getCurrentList().snapshot());
             mRecyclerView.addItemDecoration(mDecoration);
@@ -197,15 +210,32 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         @BindView(R.id.lay_bg)
         ConstraintLayout layout;
 
-        public DescHolder(View itemView) {
+        DescHolder(View itemView) {
             super(itemView);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         protected void onBind(Cell cell) {
-
             mTitle.setText(cell.getLabelName() + ":");
             mContent.setText(cell.getInputValue());
+
+            mContent.post(() -> {
+                // 文本内容不够的时候处理
+                float height = StringsUtils.getTotalHeight(mContent.getMeasuredWidth(), 2, 14, mContent, cell.getInputValue());
+                float limitHeight = UIUtils.dip2px(getContext(), 72);
+                if (height > limitHeight) {
+                    String simpleStr = StringsUtils.getSimpleString(mContent.getWidth(), mContent, cell.getInputValue());
+                    mContent.setText(simpleStr);
+                    mContent.setOnClickListener(v -> {
+                        // 弹出框
+                        DetailTextDialog dialog = new DetailTextDialog(getContext(), R.style.DialogTheme);
+                        dialog.setContent(cell.getInputValue());
+                        dialog.show();
+                    });
+                }
+            });
+
         }
     }
 
@@ -219,7 +249,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         @BindView(R.id.et_content)
         TextView mEditContent;
 
-        public EditHolder(View itemView) {
+        EditHolder(View itemView) {
             super(itemView);
         }
 
@@ -246,6 +276,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
     /**
      * 检查框的Holder
      */
+    @SuppressWarnings("WeakerAccess")
     class CheckHolder extends CustomPagedListAdapter.ViewHolder<Cell> {
 
         @BindView(R.id.tv_title)
@@ -255,7 +286,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         @BindView(R.id.tv_no)
         CheckBox mNo;
 
-        public CheckHolder(View itemView) {
+        CheckHolder(View itemView) {
             super(itemView);
         }
 
@@ -304,6 +335,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
     /**
      * 照片的Holder
      */
+    @SuppressWarnings({"ResultOfMethodCallIgnored"})
     class PhotoHolder extends CustomPagedListAdapter.ViewHolder<Cell> implements GridTableAdapter.PhotoObserver {
 
         @BindView(R.id.tv_title)
@@ -316,7 +348,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         private String mPath;
         private Badge badge;
 
-        public PhotoHolder(View itemView) {
+        PhotoHolder(View itemView) {
             super(itemView);
         }
 
@@ -349,6 +381,8 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
             mPhoto.setOnClickListener(v -> {
                 // 查询图片
                 String path = cell.getPath();
+                if (TextUtils.isEmpty(path) || !new File(path).exists())
+                    return;
                 List<Bitmap> bitmaps = PhotoUtils.getAlbumByPath(path, Common.Constant.PHOTO_NAME_SUFFIX);
                 if (bitmaps == null || bitmaps.size() == 0) {
                     return;
@@ -356,11 +390,8 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
                 IPhotoPager pageView = new PhotoPagerViewProxy.Builder(getActivity())
                         .addBitmaps(bitmaps)// 添加图片
                         .showDelete(true)// 是否删除图片按钮 普通主题特有
-                        .setDeleteListener(new DeleteListener() {
-                            @Override
-                            public void onDelete(int position) {
-                                // 自定义删除逻辑
-                            }
+                        .setDeleteListener(position -> {
+                            // 自定义删除逻辑
                         })
                         .showAnimation(true)// 是否显示开始和退出动画
                         .setAnimationType(PhotoPagerViewProxy.ANIMATION_SCALE_ALPHA)// 动画类型
@@ -401,6 +432,8 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
      * 日期Holder
      */
     class DateHolder extends CustomPagedListAdapter.ViewHolder<Cell> {
+        @BindView(R.id.tv_title)
+        TextView mTitle;
         @BindView(R.id.tv_date)
         TextView mDateTv;
         @BindView(R.id.tv_year)
@@ -408,12 +441,13 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         @BindView(R.id.tv_month)
         TextView mMonthTv;
 
-        public DateHolder(View itemView) {
+        DateHolder(View itemView) {
             super(itemView);
         }
 
         @Override
         protected void onBind(Cell cell) {
+            mTitle.setText(cell.getLabelName());
             String time = cell.getInputValue();
             if (!TextUtils.isEmpty(time))
                 setText(new Date());
@@ -434,7 +468,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
         }
 
         private void setText(Date date) {
-            mDateTv.setText(DateUtils.date2NormalStr(date));
+            mDateTv.setText(DateUtils.date2MM_dd(date));
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             mYearTv.setText(Integer.toString(calendar.get(Calendar.YEAR)));
@@ -454,7 +488,7 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
 
         private OptionsPickerView<String> pvCustomOptions = null;
 
-        public SelectionHolder(View itemView) {
+        SelectionHolder(View itemView) {
             super(itemView);
         }
 
@@ -468,46 +502,29 @@ public class LinearTableFragment extends BaseMvpFragment<LinearTablePresenter>
             // 项目不可这么写
             String[] array = new String[]{"螺丝帽", "扳手", "军刀", "锤子", "螺丝刀", "电灯"};
 
-            mList.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pvCustomOptions = new OptionsPickerBuilder(getContext(),
-                            new OnOptionsSelectListener() {
-                                @Override
-                                public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                    //返回的分别是三个级别的选中位置
-                                    String tx = array[options1];
-                                    mList.setText(tx);
-                                    cell.setInputValue(tx);
-                                }
-                            })
-                            .setLayoutRes(R.layout.pickerview_custom_options_view, new CustomListener() {
-                                @Override
-                                public void customLayout(View v) {
-                                    Button tvSubmit = v.findViewById(R.id.mBtnYes);
-                                    Button tvCancel = v.findViewById(R.id.mBtnNo);
-                                    tvSubmit.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            pvCustomOptions.returnData();
-                                            pvCustomOptions.dismiss();
-                                        }
-                                    });
+            mList.setOnClickListener(v -> {
+                pvCustomOptions = new OptionsPickerBuilder(getContext(),
+                        (options1, options2, options3, v1) -> {
+                            //返回的分别是三个级别的选中位置
+                            String tx = array[options1];
+                            mList.setText(tx);
+                            cell.setInputValue(tx);
+                        })
+                        .setLayoutRes(R.layout.pickerview_custom_options_view, v12 -> {
+                            Button tvSubmit = v12.findViewById(R.id.mBtnYes);
+                            Button tvCancel = v12.findViewById(R.id.mBtnNo);
+                            tvSubmit.setOnClickListener(v121 -> {
+                                pvCustomOptions.returnData();
+                                pvCustomOptions.dismiss();
+                            });
 
-                                    tvCancel.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            pvCustomOptions.dismiss();
-                                        }
-                                    });
-                                }
-                            })
-                            .isDialog(true)
-                            .setOutSideCancelable(false)
-                            .build();
-                    pvCustomOptions.setPicker(Arrays.asList(array));//添加数据
-                    pvCustomOptions.show();
-                }
+                            tvCancel.setOnClickListener(v1212 -> pvCustomOptions.dismiss());
+                        })
+                        .isDialog(true)
+                        .setOutSideCancelable(false)
+                        .build();
+                pvCustomOptions.setPicker(Arrays.asList(array));//添加数据
+                pvCustomOptions.show();
             });
         }
     }

@@ -11,10 +11,15 @@ import java.util.List;
  * Author WangJie
  * Created on 2019/8/13.
  */
-public interface TableView extends BaseView {
+public interface GridTableView extends BaseView {
 
     /**
      * 加载单元格结果
      */
-    void onLoadCellResult(List<Cell> titles,List<Cell> contents);
+    void onInitLoadResult(List<Cell> titles, List<Cell> contents);
+
+    /**
+     * 加载更多的结果
+     */
+    void onLoadMoreResult(List<Cell> contents);
 }

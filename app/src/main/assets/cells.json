@@ -28,7 +28,7 @@
     "col": 3,
     "type": 1,
     "inputValue": "",
-    "labelName": "检查项",
+    "labelName": "照片项",
     "isTitle": true
   },
   {
@@ -52,15 +52,15 @@
     "col": 6,
     "type": 1,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "检查项",
     "isTitle": true
   },
   {
     "row": 1,
     "col": 0,
     "type": 1,
-    "inputValue": "",
-    "labelName": "1",
+    "inputValue": "1",
+    "labelName": "",
     "isTitle": false
   },
   {
@@ -75,16 +75,16 @@
     "row": 1,
     "col": 2,
     "type": 2,
-    "inputValue": "无敌",
+    "inputValue": "",
     "labelName": "",
     "isTitle": false
   },
   {
     "row": 1,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "大小",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -106,25 +106,25 @@
   {
     "row": 1,
     "col": 6,
-    "type": 6,
+    "type": 3,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "大小",
     "isTitle": false
   },
   {
     "row": 2,
     "col": 0,
     "type": 1,
-    "inputValue": "",
-    "labelName": "2",
+    "inputValue": "2",
+    "labelName": "",
     "isTitle": false
   },
   {
     "row": 2,
     "col": 1,
     "type": 1,
-    "inputValue": "",
-    "labelName": "小明",
+    "inputValue": "小明",
+    "labelName": "",
     "isTitle": false
   },
   {
@@ -138,9 +138,9 @@
   {
     "row": 2,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "高度",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -162,9 +162,9 @@
   {
     "row": 2,
     "col": 6,
-    "type": 6,
+    "type": 3,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "高度",
     "isTitle": false
   },
   {
@@ -194,9 +194,9 @@
   {
     "row": 3,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "高度",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -218,9 +218,9 @@
   {
     "row": 3,
     "col": 6,
-    "type": 6,
+    "type": 3,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "高度",
     "isTitle": false
   },
   {
@@ -250,9 +250,9 @@
   {
     "row": 4,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "高度",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -274,9 +274,9 @@
   {
     "row": 4,
     "col": 6,
-    "type": 6,
+    "type": 3,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "高度",
     "isTitle": false
   },
   {
@@ -306,9 +306,9 @@
   {
     "row": 5,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "高度",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -330,9 +330,9 @@
   {
     "row": 5,
     "col": 6,
-    "type": 6,
+    "type": 3,
     "inputValue": "",
-    "labelName": "照片项",
+    "labelName": "高度",
     "isTitle": false
   },
   {
@@ -362,9 +362,9 @@
   {
     "row": 6,
     "col": 3,
-    "type": 3,
+    "type": 6,
     "inputValue": "",
-    "labelName": "高度",
+    "labelName": "照片项",
     "isTitle": false
   },
   {
@@ -386,9 +386,233 @@
   {
     "row": 6,
     "col": 6,
+    "type": 3,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 0,
+    "type": 1,
+    "inputValue": "7",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 1,
+    "type": 1,
+    "inputValue": "小虎",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 2,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 3,
     "type": 6,
     "inputValue": "",
     "labelName": "照片项",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": false
+  },
+  {
+    "row": 7,
+    "col": 6,
+    "type": 3,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 0,
+    "type": 1,
+    "inputValue": "8",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 1,
+    "type": 1,
+    "inputValue": "小文",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 2,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 3,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": false
+  },
+  {
+    "row": 8,
+    "col": 6,
+    "type": 3,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 0,
+    "type": 1,
+    "inputValue": "9",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 1,
+    "type": 1,
+    "inputValue": "消磨",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 2,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 3,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": false
+  },
+  {
+    "row": 9,
+    "col": 6,
+    "type": 3,
+    "inputValue": "",
+    "labelName": "高度",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 0,
+    "type": 1,
+    "inputValue": "10",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 1,
+    "type": 1,
+    "inputValue": "小智",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 2,
+    "type": 2,
+    "inputValue": "",
+    "labelName": "",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 3,
+    "type": 6,
+    "inputValue": "",
+    "labelName": "照片项",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 4,
+    "type": 4,
+    "inputValue": "",
+    "labelName": "已完成",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 5,
+    "type": 5,
+    "inputValue": "",
+    "labelName": "位置",
+    "isTitle": false
+  },
+  {
+    "row": 10,
+    "col": 6,
+    "type": 3,
+    "inputValue": "",
+    "labelName": "高度",
     "isTitle": false
   }
 ]

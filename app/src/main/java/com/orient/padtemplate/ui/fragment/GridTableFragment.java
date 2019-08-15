@@ -2,47 +2,54 @@ package com.orient.padtemplate.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
-import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
-import com.orient.padtemplate.contract.presenter.FlowPresenter;
-import com.orient.padtemplate.contract.presenter.TablePresenter;
-import com.orient.padtemplate.contract.view.FlowView;
-import com.orient.padtemplate.contract.view.TableView;
+import com.orient.padtemplate.contract.presenter.GridTablePresenter;
+import com.orient.padtemplate.contract.view.GridTableView;
 import com.orient.padtemplate.core.data.db.Cell;
-import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.ui.adapter.GridTableAdapter;
-import com.orient.padtemplate.utils.DateUtils;
 import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.scroll.ScrollablePanel;
 
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 
 /**
- * 流程的展示界面
- * <p>
+ * 网格表格的Fragment
+ * 1. 表格布局 ScrollablePanel
+ * 2. 分页方法 下拉刷新控件SwipeToLoadLayout + 自定义分页策略
  * create an instance of this fragment.
  */
-public class GridTableFragment extends BaseMvpFragment<TablePresenter>
-        implements TableView {
+public class GridTableFragment extends BaseMvpFragment<GridTablePresenter>
+        implements GridTableView, ScrollablePanel.OnScrollToTopOrBottomCallback, OnRefreshListener, OnLoadMoreListener {
 
-    @BindView(R.id.sp_content)
+    // 每次加载四行数据
+    private static final int LOADING_LINES = 4;
+
+    @BindView(R.id.swipe_target)
     ScrollablePanel mScrollablePanel;
     @BindView(R.id.empty)
     EmptyView mEmptyView;
+    // 刷新的布局
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout mLayout;
 
     private GridTableAdapter mAdapter;
+    // 当前的列数
+    private int col;
+    // 当前的行数
+    private int curLine = -1;
+    // 当前加载的行数
+    private int lastLines = 0;
+    // 用来测量上滑还是下滑的距离差
 
     @Override
     protected int getLayoutId() {
@@ -53,7 +60,13 @@ public class GridTableFragment extends BaseMvpFragment<TablePresenter>
     protected void initWidget(View root) {
         super.initWidget(root);
 
-        mEmptyView.bind(mScrollablePanel);
+        mLayout.setOnRefreshListener(this);
+        mLayout.setOnLoadMoreListener(this);
+        mLayout.setRefreshEnabled(false);
+        mLayout.setLoadMoreEnabled(false);
+        mScrollablePanel.addScrollToTopOrBottomListener(this);
+
+        mEmptyView.bind(mLayout);
         setPlaceHolderView(mEmptyView);
     }
 
@@ -61,23 +74,53 @@ public class GridTableFragment extends BaseMvpFragment<TablePresenter>
     protected void initData() {
         super.initData();
 
-        mPlaceHolderView.triggerLoading();
-        mPresenter.loadCells("1-1-1");
+        mPlaceHolderView.triggerOk();
+        mLayout.post(() -> {
+            mLayout.setRefreshEnabled(true);
+            mLayout.setRefreshing(true);
+        });
     }
 
     @Override
-    public void onLoadCellResult(List<Cell> titles, List<Cell> contents) {
+    public void onInitLoadResult(List<Cell> titles, List<Cell> contents) {
         if (titles.size() == 0 || contents.size() == 0) {
             mPlaceHolderView.triggerEmpty();
             return;
         }
-        //  得到设备信息
-        DisplayMetrics d = getResources().getDisplayMetrics();
 
-        mAdapter = new GridTableAdapter(titles, contents, getContext(), true, d.widthPixels, this);
+        col = titles.size();
+        lastLines = contents.size() / col;
+        curLine = lastLines;
+
+        mAdapter = new GridTableAdapter(titles, contents, getContext(), true, this);
         mScrollablePanel.setPanelAdapter(mAdapter);
-        mPlaceHolderView.triggerOk();
 
+        mLayout.setRefreshing(false);
+        mLayout.setRefreshEnabled(false);
+    }
+
+    @Override
+    public void onLoadMoreResult(List<Cell> contents) {
+        if (contents.size() == 0) {
+            showToast("数据加载完毕");
+            mLayout.setLoadingMore(false);
+            mLayout.setLoadMoreEnabled(false);
+            return;
+        }
+
+        lastLines = contents.size() / col;
+        curLine += lastLines;
+
+        List<Cell> curCells = mAdapter.getContents();
+        curCells.addAll(contents);
+        mAdapter = new GridTableAdapter(mAdapter.getTitles()
+                , curCells, getContext(), true, this);
+        mScrollablePanel.setPanelAdapter(mAdapter);
+
+        if (mLayout.isLoadingMore()) {
+            mLayout.setLoadingMore(false);
+            mLayout.setLoadMoreEnabled(false);
+        }
     }
 
     @Override
@@ -89,5 +132,31 @@ public class GridTableFragment extends BaseMvpFragment<TablePresenter>
                 mAdapter.notifyPhotoChanged();
             }
         }
+    }
+
+    @Override
+    public void onScrollToTopOrBottom(boolean isToTop, boolean isToBottom) {
+        if (!isToTop) {
+            mLayout.setLoadMoreEnabled(true);
+            mLayout.setLoadingMore(true);
+        }
+    }
+
+    @Override
+    public void onLoadMore() {
+        if (lastLines < LOADING_LINES && lastLines != -1) {
+            showToast("数据加载完毕！");
+            mLayout.setLoadingMore(false);
+            mLayout.setLoadMoreEnabled(false);
+            return;
+        }
+        mPresenter.loadMore("1-1-1", curLine + 1, curLine + LOADING_LINES);
+    }
+
+    @Override
+    public void onRefresh() {
+        // 加载1行表格标题
+        // 加载6行表格头部
+        mPresenter.initLoad("1-1-1");
     }
 }

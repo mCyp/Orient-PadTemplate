@@ -21,11 +21,12 @@ import com.orient.padtemplate.widget.suspension.ISuspensionInterface;
 public class Cell implements ISuspensionInterface {
     // 描述、编辑、检查、日期、选择和照片
     public static final int CELL_DESC = 1;
-    public static final int CELL_EDIT = 2;
+    public static final int CELL_PHOTO = 2;
     public static final int CELL_CHECK = 3;
     public static final int CELL_DATE = 4;
     public static final int CELL_SELECTION = 5;
-    public static final int CELL_PHOTO = 6;
+    public static final int CELL_EDIT = 6;
+
 
     @Id
     private String id;

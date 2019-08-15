@@ -5,15 +5,32 @@
     android:layout_height="match_parent"
     >
 
-    <com.orient.padtemplate.widget.scroll.ScrollablePanel
-        android:id="@+id/sp_content"
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        >
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/refresh_twitter_header_view" />
+
+        <com.orient.padtemplate.widget.scroll.ScrollablePanel
+            android:id="@+id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/common_bg_white"
+            />
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/refresh_classic_footer_view" />
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 
     <com.orient.padtemplate.widget.placeholder.EmptyView
         android:id="@+id/empty"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

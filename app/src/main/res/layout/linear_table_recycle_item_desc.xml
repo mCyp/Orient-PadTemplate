@@ -26,8 +26,9 @@
         app:layout_constraintWidth_percent="0.7"
         tools:text="我的哈哈哈哈哈哈" />
 
-    <!--<include layout="@layout/recycle_table_divide_line"
-        app:layout_constraintLeft_toRightOf="@+id/tv_title"/>-->
+    <include layout="@layout/common_linear_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>

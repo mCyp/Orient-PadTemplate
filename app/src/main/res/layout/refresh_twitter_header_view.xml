@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.orient.padtemplate.widget.loading.TwitterRefreshHeaderView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/len_80"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="@dimen/len_32"
+            android:layout_height="@dimen/len_32"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/common_ic_pull_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_success"
+            android:layout_width="@dimen/len_32"
+            android:layout_height="@dimen/len_32"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:src="@drawable/common_ic_scroll_success"
+            android:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/iv_process"
+            android:layout_width="@dimen/len_32"
+            android:layout_height="@dimen/len_32"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:src="@drawable/common_ic_pull_process"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary" />
+    </RelativeLayout>
+</com.orient.padtemplate.widget.loading.TwitterRefreshHeaderView>

@@ -23,7 +23,7 @@ public class ListActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.common_tab_viewpager_activity;
+        return R.layout.list_show_activity;
     }
 
     @Override

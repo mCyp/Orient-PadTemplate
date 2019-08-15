@@ -98,7 +98,7 @@ dependencies {
     // 时间选择器控件
     implementation "com.contrarywind:Android-PickerView:$rootProject.ext.timeDiaogVersion"
     // 下拉刷新的库
-    //implementation "com.github.Aspsine:SwipeToLoadLayout:$rootProject.ext.refreshVersion"
+    implementation "com.github.Aspsine:SwipeToLoadLayout:$rootProject.ext.refreshVersion"
 
     // 二维码库
     implementation "cn.bingoogolapple:bga-qrcode-zbar:$rootProject.ext.zxingVersion"

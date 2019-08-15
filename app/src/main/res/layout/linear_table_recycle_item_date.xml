@@ -2,8 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/TableItemBgStyle"
-    android:id="@+id/lay_bg">
+    android:id="@+id/lay_bg"
+    style="@style/TableItemBgStyle">
 
 
     <TextView
@@ -13,45 +13,49 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.3"
-        tools:text="标题："
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:text="标题：" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_year"
-        android:textSize="@dimen/font_24"
-        android:textColor="@color/colorPrimary"
         android:layout_marginEnd="@dimen/len_4"
         android:text="5月14日"
-        android:textStyle="bold"/>
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/font_24"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_year"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_year"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/len_2"
+        android:layout_marginEnd="@dimen/len_24"
+        android:text="2019"
+        android:textColor="@color/colorSecond"
         android:textSize="@dimen/text_small_size"
-        android:textColor="@color/teal_200"
-        android:text="2019"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_date" />
 
     <TextView
         android:id="@+id/tv_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/text_small_size"
-        android:textColor="@color/teal_200"
+        android:layout_marginEnd="@dimen/len_24"
         android:layout_marginBottom="@dimen/len_2"
         android:text="今日"
+        android:textColor="@color/colorSecond"
+        android:textSize="@dimen/text_small_size"
         app:layout_constraintBottom_toBottomOf="@+id/tv_date"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <!--<include layout="@layout/recycle_table_divide_line" />-->
+    <include
+        layout="@layout/common_linear_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

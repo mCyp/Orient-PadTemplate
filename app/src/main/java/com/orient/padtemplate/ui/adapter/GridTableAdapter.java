@@ -81,7 +81,7 @@ public class GridTableAdapter extends PanelAdapter {
     public GridTableAdapter() {
     }
 
-    public GridTableAdapter(List<Cell> titles, List<Cell> contents, Context context, boolean isEdit, int screenWidth
+    public GridTableAdapter(List<Cell> titles, List<Cell> contents, Context context, boolean isEdit
             , Fragment fragment) {
         this.titles = titles;
         this.contents = contents;
@@ -89,7 +89,7 @@ public class GridTableAdapter extends PanelAdapter {
         this.isEdit = isEdit;
         this.mFragment = fragment;
 
-        init(screenWidth);
+        init(context.getResources().getDisplayMetrics().widthPixels);
     }
 
     public List<Cell> getTitles() {
@@ -234,19 +234,19 @@ public class GridTableAdapter extends PanelAdapter {
             if (cell.getIsTitle()) {
                 mContent.setText(cell.getLabelName());
             } else {
-                mContent.setText(cell.getLabelName());
+                mContent.setText(cell.getInputValue());
             }
 
             // 文本内容不够的时候处理
-            float height = StringsUtils.getTotalHeight(aveWidth, 2, 14, mContent, cell.getLabelName());
+            float height = StringsUtils.getTotalHeight(aveWidth, 2, 14, mContent, cell.getInputValue());
             float limitHeight = UIUtils.dip2px(mContext, 100);
             if (height > limitHeight) {
-                String simpleStr = StringsUtils.getSimpleString(aveWidth, mContent, cell.getLabelName());
+                String simpleStr = StringsUtils.getSimpleString(aveWidth, mContent, cell.getInputValue());
                 mContent.setText(simpleStr);
                 mContent.setOnClickListener(v -> {
                     // 弹出框
                     DetailTextDialog dialog = new DetailTextDialog(mContext, R.style.DialogTheme);
-                    dialog.setContent(cell.getLabelName());
+                    dialog.setContent(cell.getInputValue());
                     dialog.show();
                 });
             }
@@ -341,6 +341,7 @@ public class GridTableAdapter extends PanelAdapter {
 
         @Override
         protected void onBind(Cell cell) {
+
             String time = cell.getInputValue();
             if (!TextUtils.isEmpty(time))
                 mTime.setText(time);

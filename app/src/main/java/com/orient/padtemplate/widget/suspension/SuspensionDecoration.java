@@ -131,8 +131,8 @@ public class SuspensionDecoration extends RecyclerView.ItemDecoration {
      * @param position
      */
     private void drawTitleArea(Canvas c, int left, int right, View child, RecyclerView.LayoutParams params, int position) {//最先调用，绘制在最下层
-        mPaint.setColor(COLOR_TITLE_BG);
-        c.drawRect(left, child.getTop() - params.topMargin - mTitleHeight, right, child.getTop() - params.topMargin, mPaint);
+        //mPaint.setColor(COLOR_TITLE_BG);
+        //c.drawRect(left, child.getTop() - params.topMargin - mTitleHeight, right, child.getTop() - params.topMargin, mPaint);
 
         int rectWidth = UIUtils.dip2px(10);
         int padWidth = UIUtils.dip2px(128);

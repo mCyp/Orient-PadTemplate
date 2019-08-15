@@ -104,7 +104,7 @@ public class TaskRepository extends BaseRepository {
      */
     public List<Cell> searchCellsByTableId(String tableId, int limitSize) {
         QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
-                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.IsTitle.eq(false))
+                .where(CellDao.Properties.TableId.eq(tableId), CellDao.Properties.IsTitle.eq(false))
                 .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col)
                 .limit(limitSize);
         return queryBuilder.list();
@@ -115,17 +115,27 @@ public class TaskRepository extends BaseRepository {
      */
     public List<Cell> searchCellByTableInRange(String tableId, int startPage, int endPage) {
         QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
-                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.Row.between(startPage,endPage))
+                .where(CellDao.Properties.TableId.eq(tableId), CellDao.Properties.Row.between(startPage, endPage))
                 .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col);
         return queryBuilder.list();
     }
 
     /**
+     * 加载指定行数的Cell
+     */
+    public Observable<List<Cell>> searchCellByTableInRangeRx(String tableId, int startPage, int endPage) {
+        QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
+                .where(CellDao.Properties.TableId.eq(tableId), CellDao.Properties.Row.between(startPage, endPage))
+                .orderAsc(CellDao.Properties.Row, CellDao.Properties.Col);
+        return queryListToTx(queryBuilder);
+    }
+
+    /**
      * 查询指定表格的列的数量
      */
-    public long countTableCol(String tableId){
+    public long countTableCol(String tableId) {
         QueryBuilder<Cell> queryBuilder = cellDao.queryBuilder()
-                .where(CellDao.Properties.TableId.eq(tableId),CellDao.Properties.IsTitle.eq(true));
+                .where(CellDao.Properties.TableId.eq(tableId), CellDao.Properties.IsTitle.eq(true));
         return queryBuilder.count();
     }
 }
