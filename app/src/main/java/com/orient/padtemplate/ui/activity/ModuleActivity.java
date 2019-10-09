@@ -30,7 +30,7 @@ import butterknife.OnClick;
  */
 public class ModuleActivity extends BaseActivity {
 
-    public static final int QR_CODE = 2;
+
 
     // TODO
     //  展示功能
@@ -92,13 +92,11 @@ public class ModuleActivity extends BaseActivity {
                     case "事件流程":
                         break;
                     case "二维码": {
-                        Intent intent = new Intent(ModuleActivity.this, QrCodeActivity.class);
-                        intent.putExtra(Common.Constant.QR_REQUEST_CODE, QR_CODE);
-                        startActivityForResult(intent, QR_CODE);
+                        startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));
                         break;
                     }
                     case "相机": {
-                        startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));
+                        startActivity(new Intent(ModuleActivity.this, CameraActivity.class));
                         break;
                     }
                     case "列表": {
@@ -138,22 +136,7 @@ public class ModuleActivity extends BaseActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        // 扫描二维码/条码回传
-        if (requestCode == QR_CODE && resultCode == RESULT_OK) {
-            if (data != null) {
-                String str = data.getStringExtra(Common.Constant.QR_REQUEST_RESULT);
-                showToast(str);
-                // TODO 自己的逻辑处理
-            } else {
-                // TODO 数据为空的情况处理
-                showToast("数据为空！");
-            }
-        }
-    }
 
     @OnClick(R.id.tv_back)
     public void back() {

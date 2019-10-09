@@ -3,10 +3,10 @@ package com.orient.padtemplate.ui.fragment;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.orient.me.widget.rv.layoutmanager.DoubleSideLayoutManager;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
@@ -15,8 +15,8 @@ import com.orient.padtemplate.contract.view.TaskView;
 import com.orient.padtemplate.core.data.db.Flow;
 import com.orient.padtemplate.utils.DateUtils;
 import com.orient.padtemplate.utils.UIUtils;
-import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.itemdecoration.DotItemDecoration;
+import com.orient.padtemplate.widget.placeholder.EmptyView;
 
 import java.util.Date;
 import java.util.List;
@@ -49,7 +49,8 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
 
         //mRecyclerView.setBackgroundColor(Color.parseColor("#9575cd"));
 
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new DoubleSideLayoutManager(DoubleSideLayoutManager.START_LEFT));
+        //mRecyclerView.setLayoutManager(new TwoSideLayoutManager(getContext()));
         mAdapter = new RecyclerAdapter<Flow>() {
             @Override
             public ViewHolder<Flow> onCreateViewHolder(View root, int viewType) {
@@ -67,8 +68,8 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         };
         mRecyclerView.setAdapter(mAdapter);
         // 分隔线
-        DotItemDecoration dotItemDecoration = providesDotItemDecoration();
-        mRecyclerView.addItemDecoration(dotItemDecoration);
+       /* DotItemDecoration dotItemDecoration = providesDotItemDecoration();
+        mRecyclerView.addItemDecoration(dotItemDecoration);*/
 
         mEmptyView.bind(mRecyclerView);
         setPlaceHolderView(mEmptyView);
@@ -87,10 +88,6 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         return new DotItemDecoration.Builder(getContext())
                 .setOrientation(DotItemDecoration.VERTICAL)//if you want a horizontal item decoration,remember to set horizontal orientation to your LayoutManager
                 .setItemStyle(DotItemDecoration.STYLE_DRAW)//choose to draw or use resource
-                .setTopDistance(20)//dp
-                .setItemInterVal(130)//dp
-                .setItemPaddingLeft(10)//default value equals to item interval value
-                .setItemPaddingRight(10)//default value equals to item interval value
                 .setDotColor(Color.parseColor("#673AB7"))
                 .setDotRadius(8)//dp
                 .setDotPaddingTop(2)
@@ -101,7 +98,6 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
                 .setTextColor(Color.parseColor("#673AB7"))
                 //.setBottomRes(R.drawable.ic_ma_1)
                 .setDotPaddingText(2)//dp.The distance between the last dot and the end text
-                .setBottomDistance(UIUtils.dip2px(30))//you can add a distance to make bottom line longer
                 .create();
     }
 

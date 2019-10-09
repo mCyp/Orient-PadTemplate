@@ -1,6 +1,8 @@
 package com.orient.padtemplate.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseMvpActivity;
+import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.presenter.CreateQrCodePresenter;
 import com.orient.padtemplate.contract.view.CreateQrCodeView;
 
@@ -22,6 +25,7 @@ import butterknife.OnClick;
 public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
         implements CreateQrCodeView {
 
+    public static final int QR_CODE = 2;
     // ******** 介绍 ********
     // 此界面通常用来利用蓝牙连接打印机进行打印二维码
     // 本Demo没有接入具体的打印SDK
@@ -73,5 +77,29 @@ public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
         mNameTv.setText("名称：" + name);
         mSerialNumTv.setText("序列号：" + serialNum);
         mPersonTv.setText("负责人：" + person);
+    }
+
+    @OnClick(R.id.tv_scan_qr_code)
+    public void onScan(){
+        Intent intent = new Intent(CreateQrCodeActivity.this, QrCodeActivity.class);
+        intent.putExtra(Common.Constant.QR_REQUEST_CODE, QR_CODE);
+        startActivityForResult(intent, QR_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // 扫描二维码/条码回传
+        if (requestCode == QR_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
+                String str = data.getStringExtra(Common.Constant.QR_REQUEST_RESULT);
+                showToast(str);
+                // TODO 自己的逻辑处理
+            } else {
+                // TODO 数据为空的情况处理
+                showToast("数据为空！");
+            }
+        }
     }
 }

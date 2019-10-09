@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.orient.padtemplate.base.app.App;
 import com.orient.padtemplate.common.Common;
 
 import java.io.File;
@@ -57,7 +58,7 @@ public class PhotoUtils {
      * @return String
      */
     public static String getTableStoragePath(String tableId, String cellId) {
-        return Environment.getExternalStorageDirectory() + Common.Constant.SECOND_PATH
+        return App.getInstance().getExternalCacheDir()
                 + File.separator
                 + "table"
                 + File.separator

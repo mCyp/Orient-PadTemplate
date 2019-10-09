@@ -101,4 +101,6 @@ ext {
 
     // 自动适配版本
     autoVersion = '1.1.2'
+
+    orientVersion = '1.0.0'
 }

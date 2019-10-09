@@ -3,6 +3,7 @@ package com.orient.padtemplate.base.app;
 import android.app.Activity;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 
 import com.orient.padtemplate.core.data.dao.DaoMaster;
@@ -10,6 +11,8 @@ import com.orient.padtemplate.core.data.dao.DaoSession;
 import com.orient.padtemplate.di.component.AppComponent;
 import com.orient.padtemplate.di.component.DaggerAppComponent;
 import com.orient.padtemplate.di.module.AppModule;
+
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -79,4 +82,5 @@ public class App extends Application implements HasActivityInjector, HasSupportF
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return mFragmentAndroidInjector;
     }
+
 }

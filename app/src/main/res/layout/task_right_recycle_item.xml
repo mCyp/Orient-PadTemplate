@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:background="@drawable/task_item_right_bg"
-    android:minHeight="@dimen/len_84">
+    android:layout_height="@dimen/len_84"
+    android:background="@drawable/task_item_right_bg">
 
     <TextView
         android:id="@+id/tv_name"

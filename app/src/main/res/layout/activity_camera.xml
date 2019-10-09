@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.CameraActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CommonToolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/common_ic_back"
+        app:title="相机模块"
+        tools:targetApi="lollipop" />
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/len_20"
+        android:background="@color/grey_300"/>
+
+    <TextView
+        android:id="@+id/tv_camera_title"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/v_line"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/font_20"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="@dimen/len_10"
+        android:layout_marginTop="@dimen/len_20"
+        android:text="照片"/>
+
+    <FrameLayout
+        android:id="@+id/lay_photo"
+        android:layout_width="@dimen/len_256"
+        android:layout_height="@dimen/len_256"
+        app:layout_constraintTop_toBottomOf="@+id/tv_camera_title"
+        app:layout_constraintBottom_toTopOf="@+id/tv_camera"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/v_line"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_mountains"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            />
+
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_camera"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/len_52"
+        app:layout_constraintTop_toBottomOf="@+id/lay_photo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/v_line"
+        android:text="拍照"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_big_size"
+        android:layout_marginTop="@dimen/len_20"
+        android:background="@drawable/common_btn_ripple_primary"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintLeft_toRightOf="@+id/v_line"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
+        android:textSize="@dimen/font_20"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="@dimen/len_10"
+        android:layout_marginTop="@dimen/len_20"
+        android:text="视频"/>
+
+    <FrameLayout
+        android:id="@+id/lay_video"
+        android:layout_width="@dimen/len_256"
+        app:layout_constraintTop_toBottomOf="@+id/tv_video_title"
+        app:layout_constraintBottom_toTopOf="@+id/tv_video"
+        app:layout_constraintLeft_toRightOf="@+id/v_line"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_height="@dimen/len_256">
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_island"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:id="@+id/iv_play_start"
+            android:layout_width="@dimen/len_64"
+            android:layout_height="@dimen/len_64"
+            android:layout_gravity="center"
+            android:src="@drawable/video_play_ic_play"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_video"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/len_52"
+        app:layout_constraintTop_toBottomOf="@+id/lay_video"
+        app:layout_constraintLeft_toRightOf="@+id/v_line"
+        app:layout_constraintRight_toLeftOf="@+id/tv_video_compress"
+        android:text="录制视频"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_big_size"
+        android:layout_marginTop="@dimen/len_20"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:background="@drawable/common_btn_ripple_primary"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_video_compress"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/len_52"
+        app:layout_constraintTop_toBottomOf="@+id/lay_video"
+        app:layout_constraintLeft_toRightOf="@+id/tv_video"
+        android:layout_marginStart="@dimen/len_20"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="压缩视频"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_big_size"
+        android:layout_marginTop="@dimen/len_20"
+        android:background="@drawable/common_btn_ripple_primary"
+   />
+
+
+
+
+</android.support.constraint.ConstraintLayout>
