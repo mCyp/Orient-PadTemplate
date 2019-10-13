@@ -48,6 +48,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter>
     @Override
     public void onLoginResult(boolean result) {
         Log.e("login", "login11111");
+
+        if(result) {
+            Intent intent = new Intent(this, ModuleActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -58,7 +63,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter>
 
     @OnClick(R.id.btn_login)
     public void login() {
-        Intent intent = new Intent(this, ModuleActivity.class);
-        startActivity(intent);
+        mPresenter.login("guest","123456");
     }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.TestFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CommonToolbar"
+        app:navigationIcon="@drawable/common_ic_back"
+        app:title="Event">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_add"
+                style="@style/WrapMatch"
+                android:text="添加事件"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_big_size"
+                android:gravity="center"
+                android:drawablePadding="@dimen/len_6"
+                android:padding="@dimen/len_10"
+                android:background="@drawable/common_btn_ripple_primary"
+                android:drawableStart="@drawable/common_ic_add_small"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.orient.padtemplate.widget.delete.DeleteRecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/len_72"
+        android:visibility="gone"/>
+
+    <com.orient.me.widget.placeholder.EmptyView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/len_72"/>
+
+</FrameLayout>

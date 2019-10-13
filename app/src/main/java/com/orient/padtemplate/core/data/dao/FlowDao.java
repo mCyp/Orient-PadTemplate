@@ -32,6 +32,8 @@ public class FlowDao extends AbstractDao<Flow, String> {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property TaskId = new Property(2, String.class, "taskId", false, "TASK_ID");
+        public final static Property Date = new Property(3, java.util.Date.class, "date", false, "DATE");
+        public final static Property TitleColor = new Property(4, String.class, "titleColor", false, "TITLE_COLOR");
     }
 
     private DaoSession daoSession;
@@ -52,7 +54,9 @@ public class FlowDao extends AbstractDao<Flow, String> {
         db.execSQL("CREATE TABLE " + constraint + "\"FLOW\" (" + //
                 "\"ID\" TEXT PRIMARY KEY NOT NULL ," + // 0: id
                 "\"NAME\" TEXT," + // 1: name
-                "\"TASK_ID\" TEXT);"); // 2: taskId
+                "\"TASK_ID\" TEXT," + // 2: taskId
+                "\"DATE\" INTEGER," + // 3: date
+                "\"TITLE_COLOR\" TEXT);"); // 4: titleColor
     }
 
     /** Drops the underlying database table. */
@@ -79,6 +83,16 @@ public class FlowDao extends AbstractDao<Flow, String> {
         if (taskId != null) {
             stmt.bindString(3, taskId);
         }
+ 
+        java.util.Date date = entity.getDate();
+        if (date != null) {
+            stmt.bindLong(4, date.getTime());
+        }
+ 
+        String titleColor = entity.getTitleColor();
+        if (titleColor != null) {
+            stmt.bindString(5, titleColor);
+        }
     }
 
     @Override
@@ -99,6 +113,16 @@ public class FlowDao extends AbstractDao<Flow, String> {
         if (taskId != null) {
             stmt.bindString(3, taskId);
         }
+ 
+        java.util.Date date = entity.getDate();
+        if (date != null) {
+            stmt.bindLong(4, date.getTime());
+        }
+ 
+        String titleColor = entity.getTitleColor();
+        if (titleColor != null) {
+            stmt.bindString(5, titleColor);
+        }
     }
 
     @Override
@@ -117,7 +141,9 @@ public class FlowDao extends AbstractDao<Flow, String> {
         Flow entity = new Flow( //
             cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // taskId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // taskId
+            cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // date
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // titleColor
         );
         return entity;
     }
@@ -127,6 +153,8 @@ public class FlowDao extends AbstractDao<Flow, String> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTaskId(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
+        entity.setTitleColor(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
      }
     
     @Override

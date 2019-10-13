@@ -3,6 +3,10 @@ package com.orient.padtemplate.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.MediaStore;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +19,7 @@ import com.orient.padtemplate.base.activity.BaseActivity;
 import com.orient.padtemplate.base.app.App;
 import com.orient.padtemplate.ui.activity.video.VideoActivity;
 import com.orient.padtemplate.ui.activity.video.VideoPlayerActivity;
+import com.orient.padtemplate.utils.FileUtils;
 import com.orient.padtemplate.utils.GlideUtils;
 import com.orient.padtemplate.utils.video.CompressListener;
 import com.orient.padtemplate.utils.video.Compressor;
@@ -34,6 +39,10 @@ public class CameraActivity extends BaseActivity {
     ImageView mVideoIv;
     @BindView(R.id.iv_play_start)
     ImageView mStartPlayer;
+    @BindView(R.id.iv_photo)
+    ImageView mPhotoIv;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private SweetAlertDialog mSweetAlertDialog;
 
@@ -46,6 +55,8 @@ public class CameraActivity extends BaseActivity {
     private Double videoLength = 0.00;
     // 命令
     private String cmd = "";
+
+    private String photoPath = "";
 
     private static final int REQUEST_CODE_FOR_PERMISSIONS = 0;//
     private static final int REQUEST_CODE_FOR_RECORD_VIDEO = 1;//录制视频请求码
@@ -61,13 +72,15 @@ public class CameraActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_camera;
+        return R.layout.camera_activity;
     }
 
 
     @Override
     protected void initWidget() {
         super.initWidget();
+
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         mCompressor = new Compressor(this);
         mCompressor.loadBinary(new InitListener() {
@@ -86,7 +99,8 @@ public class CameraActivity extends BaseActivity {
     // 摄影开始
     @OnClick(R.id.tv_video)
     public void onVideoClick() {
-        VideoActivity.startActivityForResult(this, REQUEST_CODE_FOR_RECORD_VIDEO);
+        String path = getExternalCacheDir().getPath() + "/cache";
+        VideoActivity.startActivityForResult(this, REQUEST_CODE_FOR_RECORD_VIDEO,path);
     }
 
     @Override
@@ -130,6 +144,30 @@ public class CameraActivity extends BaseActivity {
         mStartPlayer.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(!TextUtils.isEmpty(photoPath)){
+            GlideUtils.loadUrl(this,photoPath,mPhotoIv);
+        }
+    }
+
+    // 打开相机的工作
+    @OnClick(R.id.tv_camera)
+    public void onCameraOpen(){
+        photoPath = getExternalCacheDir().getAbsolutePath() + "/photo";
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Uri uri = FileUtils.getImageUri(photoPath);
+        photoPath = uri.getPath();
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); //添加这一句表示对目标应用临时授权该Uri所代表的文件
+        }
+        startActivityForResult(intent, 0);
+    }
+
     @OnClick(R.id.iv_video)
     public void onVideoPlay(){
         if(!TextUtils.isEmpty(currentOutputVideoPath) && new File(currentOutputVideoPath).exists()){
@@ -160,6 +198,10 @@ public class CameraActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 压缩指令
+     * @param cmd 指令
+     */
     private void execCommand(String cmd) {
         File mFile = new File(currentOutputVideoPath);
         if (mFile.exists()) {

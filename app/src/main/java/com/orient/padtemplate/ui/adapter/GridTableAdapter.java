@@ -1,5 +1,6 @@
 package com.orient.padtemplate.ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -73,6 +74,7 @@ public class GridTableAdapter extends PanelAdapter {
     private boolean isEdit;
     private int row, col;
     private Fragment mFragment;
+    private Activity mActivity;
     // 每个cell的平均宽度
     private int aveWidth;
     private HashMap<String, PhotoObserver> map = new HashMap<>();
@@ -88,6 +90,17 @@ public class GridTableAdapter extends PanelAdapter {
         this.mContext = context;
         this.isEdit = isEdit;
         this.mFragment = fragment;
+
+        init(context.getResources().getDisplayMetrics().widthPixels);
+    }
+
+    public GridTableAdapter(List<Cell> titles, List<Cell> contents, Context context, boolean isEdit
+            , Activity activity) {
+        this.titles = titles;
+        this.contents = contents;
+        this.mContext = context;
+        this.isEdit = isEdit;
+        this.mActivity = activity;
 
         init(context.getResources().getDisplayMetrics().widthPixels);
     }
@@ -468,7 +481,10 @@ public class GridTableAdapter extends PanelAdapter {
                 Uri uri = PhotoUtils.getMediaUriFromFile(path);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                 takePhotoCellId = id;
-                mFragment.startActivityForResult(intent, TYPE_TAKE_PHOTO);
+                if (mFragment == null) {
+                    mActivity.startActivityForResult(intent, TYPE_TAKE_PHOTO);
+                } else
+                    mFragment.startActivityForResult(intent, TYPE_TAKE_PHOTO);
             });
             mPhoto.setOnClickListener(v -> {
                 // 查询图片
@@ -477,7 +493,14 @@ public class GridTableAdapter extends PanelAdapter {
                 if (bitmaps == null || bitmaps.size() == 0) {
                     return;
                 }
-                IPhotoPager pageView = new PhotoPagerViewProxy.Builder(mFragment.getActivity())
+                IPhotoPager pageView;
+                PhotoPagerViewProxy.Builder builder;
+                if (mFragment == null) {
+                    builder = new PhotoPagerViewProxy.Builder(mActivity);
+                } else {
+                    builder = new PhotoPagerViewProxy.Builder(mFragment.getActivity());
+                }
+                pageView = builder
                         .addBitmaps(bitmaps)// 添加图片
                         .showDelete(true)// 是否删除图片按钮 普通主题特有
                         .setDeleteListener(new DeleteListener() {

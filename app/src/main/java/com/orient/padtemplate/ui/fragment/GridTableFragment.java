@@ -9,13 +9,13 @@ import android.view.View;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
+import com.orient.me.widget.placeholder.EmptyView;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.contract.presenter.GridTablePresenter;
 import com.orient.padtemplate.contract.view.GridTableView;
 import com.orient.padtemplate.core.data.db.Cell;
 import com.orient.padtemplate.ui.adapter.GridTableAdapter;
-import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.scroll.ScrollablePanel;
 
 import java.util.List;

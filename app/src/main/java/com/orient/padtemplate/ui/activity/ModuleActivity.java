@@ -16,6 +16,8 @@ import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseActivity;
 import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
 import com.orient.padtemplate.common.Common;
+import com.orient.padtemplate.ui.activity.event.EventActivity;
+import com.orient.padtemplate.ui.activity.task.TaskActivity;
 import com.orient.padtemplate.utils.GlideUtils;
 import com.orient.padtemplate.utils.UIUtils;
 
@@ -88,8 +90,10 @@ public class ModuleActivity extends BaseActivity {
 
                 switch (moduleItem.name) {
                     case "表格流程":
+                        startActivity(new Intent(ModuleActivity.this, TaskActivity.class));
                         break;
                     case "事件流程":
+                        startActivity(new Intent(ModuleActivity.this, EventActivity.class));
                         break;
                     case "二维码": {
                         startActivity(new Intent(ModuleActivity.this, CreateQrCodeActivity.class));

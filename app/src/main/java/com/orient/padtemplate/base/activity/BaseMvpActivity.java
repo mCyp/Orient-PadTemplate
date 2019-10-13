@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.orient.me.widget.placeholder.PlaceHolderView;
 import com.orient.padtemplate.base.contract.view.BaseView;
 import com.orient.padtemplate.base.contract.presenter.BasePresenter;
-import com.orient.padtemplate.widget.placeholder.PlaceHolderView;
-
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;

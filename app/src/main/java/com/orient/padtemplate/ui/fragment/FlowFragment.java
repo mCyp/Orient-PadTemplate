@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orient.me.widget.placeholder.EmptyView;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
@@ -14,7 +15,6 @@ import com.orient.padtemplate.contract.presenter.FlowPresenter;
 import com.orient.padtemplate.contract.view.FlowView;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.utils.DateUtils;
-import com.orient.padtemplate.widget.placeholder.EmptyView;
 
 import java.util.Date;
 import java.util.List;

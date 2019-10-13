@@ -3,7 +3,9 @@ package com.orient.padtemplate.ui.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,11 +46,20 @@ public class CreateQrCodeActivity extends BaseMvpActivity<CreateQrCodePresenter>
     TextView mPersonTv;
     @BindView(R.id.iv_code)
     ImageView mCodeIv;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
 
     @Override
     protected int getLayoutId() {
         return R.layout.create_qr_code_activity;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
 
     @Override

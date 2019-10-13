@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.orient.me.widget.placeholder.EmptyView;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
 import com.orient.padtemplate.base.recyclerview.DeleteRecyclerAdapter;
@@ -11,7 +12,6 @@ import com.orient.padtemplate.contract.presenter.FlowPresenter;
 import com.orient.padtemplate.contract.view.FlowView;
 import com.orient.padtemplate.core.data.db.Table;
 import com.orient.padtemplate.utils.DateUtils;
-import com.orient.padtemplate.widget.placeholder.EmptyView;
 import com.orient.padtemplate.widget.delete.DeleteRecyclerView;
 import com.orient.padtemplate.widget.delete.OnItemClickListener;
 

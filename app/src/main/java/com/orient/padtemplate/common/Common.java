@@ -22,6 +22,9 @@ public class Common {
         // NetDialog
         String SP_IP_ADDRESS = "SP_IP_ADDRESS";
 
+        // 用户id
+        String KEY_USER_ID = "KEY_USER_ID";
+
 
     }
 }

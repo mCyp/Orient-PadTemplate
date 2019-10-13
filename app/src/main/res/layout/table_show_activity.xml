@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="92dp"
         android:layout_height="@dimen/len_72"
+        android:elevation="@dimen/len_4"
         android:layout_marginStart="@dimen/len_20"
         android:layout_marginEnd="@dimen/len_20"
         android:background="@drawable/list_white_bg"
@@ -32,6 +33,7 @@
         android:layout_marginStart="@dimen/len_20"
         android:layout_marginTop="174dp"
         android:layout_marginEnd="@dimen/len_20"
+        android:elevation="@dimen/len_4"
         android:layout_marginBottom="@dimen/len_20"
         android:background="@drawable/table_trans_bg" />
 

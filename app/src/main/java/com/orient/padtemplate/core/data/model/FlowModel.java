@@ -1,7 +1,10 @@
 package com.orient.padtemplate.core.data.model;
 
+import android.graphics.Color;
+
 import com.orient.padtemplate.core.data.db.Flow;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,6 +14,15 @@ import java.util.List;
  * Created on 2019/8/5.
  */
 public class FlowModel {
+    private static final String[] COLORS = new String[]{
+            "#f36c60",
+            "#ab47bc",
+            "#aed581",
+            "#5FB29F",
+            "#ec407a",
+            "#ffd54f"
+    };
+
     private String id;
     private String name;
     private List<TableModel> tableModels;
@@ -40,7 +52,7 @@ public class FlowModel {
     }
 
     // 返回一个流程
-    public Flow toFlow(String taskId){
-        return new Flow(id,name,taskId);
+    public Flow toFlow(String taskId, int i, Date date){
+        return new Flow(id,name,taskId,date, COLORS[i%COLORS.length]);
     }
 }

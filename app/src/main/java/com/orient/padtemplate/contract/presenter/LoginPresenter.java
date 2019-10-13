@@ -22,6 +22,8 @@ import com.orient.padtemplate.utils.FileUtils;
 import com.orient.padtemplate.utils.IdUtils;
 import com.orient.padtemplate.utils.RxUtils;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -77,8 +79,12 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     @Override
                     public void onNext(Boolean aBoolean) {
                         super.onNext(aBoolean);
+
+                        User user = new User(IdUtils.createId(),"王信","guest","123456");
+                        userRepository.insertUser(user);
+
                         AppPrefUtils.putBoolean(Common.Constant.IS_FIRST_INIT, false);
-                        mView.onLoginResult(aBoolean);
+                        //mView.onLoginResult(aBoolean);
                     }
                 });
     }
@@ -99,8 +105,14 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         Task task = taskModel.toTask();
         taskRepository.insertTask(task);
         List<FlowModel> flowModels = taskModel.getFlowModels();
-        for (FlowModel flowModel : flowModels) {
-            Flow flow = flowModel.toFlow(task.getId());
+
+        // 构建日期
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        for (int i =0;i<flowModels.size();i++) {
+            calendar.add(Calendar.MONTH,1);
+            FlowModel flowModel = flowModels.get(i);
+            Flow flow = flowModel.toFlow(task.getId(),i,calendar.getTime());
             taskRepository.insertFlow(flow);
             List<TableModel> tableModels = flowModel.getTableModels();
             if (tableModels != null)

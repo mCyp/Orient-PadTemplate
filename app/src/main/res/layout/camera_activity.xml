@@ -55,7 +55,7 @@
             android:id="@+id/iv_photo"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/ic_mountains"
+            android:src="@drawable/common_ic_mountains"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             />
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_island"
+            android:src="@drawable/common_ic_island"
             android:scaleType="centerCrop"
             />
 

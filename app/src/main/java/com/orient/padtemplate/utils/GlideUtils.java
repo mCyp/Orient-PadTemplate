@@ -16,8 +16,11 @@ import com.bumptech.glide.request.target.SimpleTarget;
  */
 public class GlideUtils {
 
-    public static void loadUrl(String url) {
-
+    public static void loadUrl(Context context, String url, final ImageView imageView) {
+        Glide.with(context).load(url)
+                .asBitmap()
+                .centerCrop()
+                .into(imageView);
     }
 
     public static void loadResource(Context context, int resource, final ImageView imageView) {

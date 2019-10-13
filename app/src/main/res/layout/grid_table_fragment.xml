@@ -28,7 +28,7 @@
             layout="@layout/refresh_classic_footer_view" />
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 
-    <com.orient.padtemplate.widget.placeholder.EmptyView
+    <com.orient.me.widget.placeholder.EmptyView
         android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -89,6 +89,12 @@ public class TaskRepository extends BaseRepository {
         return queryListToTx(queryBuilder);
     }
 
+    public List<Flow> searchFlowByFlowIdAndUser(String taskId) {
+        QueryBuilder<Flow> queryBuilder = flowDao.queryBuilder()
+                .where(FlowDao.Properties.TaskId.eq(taskId));
+        return queryBuilder.list();
+    }
+
     /**
      * 根据表格获取单元格
      */

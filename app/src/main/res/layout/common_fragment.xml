@@ -3,15 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_green_50"
     >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:visibility="gone"
+       />
 
-    <com.orient.padtemplate.widget.placeholder.EmptyView
+    <com.orient.me.widget.placeholder.EmptyView
         android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

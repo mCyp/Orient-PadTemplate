@@ -67,6 +67,7 @@ import butterknife.BindView;
 @SuppressWarnings("deprecation")
 public class VideoActivity extends BaseActivity {
     private static final String TAG = CameraActivity.class.getSimpleName();
+    private static final String PATH ="PATH";
 
     // 说明：
     // 主体代码来自网络
@@ -105,8 +106,11 @@ public class VideoActivity extends BaseActivity {
     private long countUp;
     private int quality = CamcorderProfile.QUALITY_480P;
 
-    public static void startActivityForResult(Activity activity, int requestCode) {
+    private String directory;
+
+    public static void startActivityForResult(Activity activity, int requestCode,String directory) {
         Intent intent = new Intent(activity, VideoActivity.class);
+        intent.putExtra(PATH,directory);
         ActivityCompat.startActivityForResult(activity, intent, requestCode, null);
     }
 
@@ -120,6 +124,7 @@ public class VideoActivity extends BaseActivity {
         super.initWidget();
         // 设置全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        directory = getIntent().getStringExtra(PATH);
 
         initialize();
     }
@@ -495,8 +500,7 @@ public class VideoActivity extends BaseActivity {
             file.mkdirs();
         }
         Date d = new Date();
-        String timestamp = String.valueOf(d.getTime());
-        url_file = App.getInstance().getExternalCacheDir().getAbsolutePath() +"/video/in.mp4";
+        url_file = directory +"/in.mp4";
 
         File file1 = new File(url_file);
         if (file1.exists()) {

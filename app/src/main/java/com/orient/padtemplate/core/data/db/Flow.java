@@ -1,13 +1,19 @@
 package com.orient.padtemplate.core.data.db;
 
+import android.graphics.Color;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+
+import com.orient.me.data.ITimeItem;
 import com.orient.padtemplate.core.data.dao.DaoSession;
 import com.orient.padtemplate.core.data.dao.TaskDao;
 import com.orient.padtemplate.core.data.dao.FlowDao;
+
+import java.util.Date;
 
 /**
  * 任务下面的流程
@@ -16,11 +22,13 @@ import com.orient.padtemplate.core.data.dao.FlowDao;
  * Created on 2019/8/5.
  */
 @Entity
-public class Flow {
+public class Flow implements ITimeItem {
     @Id
     private String id;
     private String name; // 流程名称
     private String taskId;
+    private Date date;
+    private String titleColor;
     @ToOne(joinProperty = "taskId")
     private Task task; // 绑定的任务
     /** Used to resolve relations */
@@ -29,15 +37,20 @@ public class Flow {
     /** Used for active entity operations. */
     @Generated(hash = 2067950489)
     private transient FlowDao myDao;
-    @Generated(hash = 1922254768)
-    public Flow(String id, String name, String taskId) {
-        this.id = id;
-        this.name = name;
-        this.taskId = taskId;
-    }
+
     @Generated(hash = 1952844042)
     public Flow() {
     }
+
+    @Generated(hash = 18645818)
+    public Flow(String id, String name, String taskId, Date date, String titleColor) {
+        this.id = id;
+        this.name = name;
+        this.taskId = taskId;
+        this.date = date;
+        this.titleColor = titleColor;
+    }
+
     public String getId() {
         return this.id;
     }
@@ -124,4 +137,35 @@ public class Flow {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getFlowDao() : null;
     }
+
+    @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Override
+    public int getColor() {
+        return Color.parseColor(titleColor);
+    }
+
+    @Override
+    public int getResource() {
+        return 0;
+    }
+
+    public Date getDate(){
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getTitleColor() {
+        return this.titleColor;
+    }
+
+    public void setTitleColor(String titleColor) {
+        this.titleColor = titleColor;
+    }
+
 }

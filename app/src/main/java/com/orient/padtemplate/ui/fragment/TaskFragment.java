@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.orient.me.widget.placeholder.EmptyView;
+import com.orient.me.widget.rv.itemdocration.timeline.TimeLine;
 import com.orient.me.widget.rv.layoutmanager.DoubleSideLayoutManager;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.fragment.BaseMvpFragment;
@@ -13,12 +15,8 @@ import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
 import com.orient.padtemplate.contract.presenter.TaskPresenter;
 import com.orient.padtemplate.contract.view.TaskView;
 import com.orient.padtemplate.core.data.db.Flow;
-import com.orient.padtemplate.utils.DateUtils;
-import com.orient.padtemplate.utils.UIUtils;
-import com.orient.padtemplate.widget.itemdecoration.DotItemDecoration;
-import com.orient.padtemplate.widget.placeholder.EmptyView;
+import com.orient.padtemplate.widget.timeline.DateInfoDTL;
 
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -37,6 +35,7 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
     EmptyView mEmptyView;
 
     private RecyclerAdapter<Flow> mAdapter;
+    private TimeLine timeLine;
 
     @Override
     protected int getLayoutId() {
@@ -48,10 +47,8 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         super.initWidget(root);
 
         //mRecyclerView.setBackgroundColor(Color.parseColor("#9575cd"));
-
         mRecyclerView.setLayoutManager(new DoubleSideLayoutManager(DoubleSideLayoutManager.START_LEFT));
-        //mRecyclerView.setLayoutManager(new TwoSideLayoutManager(getContext()));
-        mAdapter = new RecyclerAdapter<Flow>() {
+        mAdapter = new RecyclerAdapter<Flow>(null) {
             @Override
             public ViewHolder<Flow> onCreateViewHolder(View root, int viewType) {
                 return new TaskFragment.ViewHolder(root);
@@ -68,11 +65,19 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         };
         mRecyclerView.setAdapter(mAdapter);
         // 分隔线
-       /* DotItemDecoration dotItemDecoration = providesDotItemDecoration();
-        mRecyclerView.addItemDecoration(dotItemDecoration);*/
+        timeLine = provideTimeLine(mAdapter.getItems());
+        mRecyclerView.addItemDecoration(timeLine);
 
         mEmptyView.bind(mRecyclerView);
         setPlaceHolderView(mEmptyView);
+    }
+
+    private TimeLine provideTimeLine(List<Flow> timeItems) {
+        return new TimeLine.Builder(getContext(), timeItems)
+                .setTitleStyle(TimeLine.FLAG_TITLE_POS_NONE, 0)
+                .setLine(TimeLine.FLAG_LINE_BEGIN_TO_END, 60, Color.parseColor("#757575"), 2)
+                .setDot(TimeLine.FLAG_DOT_DRAW)
+                .build(DateInfoDTL.class);
     }
 
     @Override
@@ -84,28 +89,13 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         mPresenter.loadFlows("1");
     }
 
-    private DotItemDecoration providesDotItemDecoration(){
-        return new DotItemDecoration.Builder(getContext())
-                .setOrientation(DotItemDecoration.VERTICAL)//if you want a horizontal item decoration,remember to set horizontal orientation to your LayoutManager
-                .setItemStyle(DotItemDecoration.STYLE_DRAW)//choose to draw or use resource
-                .setDotColor(Color.parseColor("#673AB7"))
-                .setDotRadius(8)//dp
-                .setDotPaddingTop(2)
-                .setDotInItemOrientationCenter(true)//set true if you want the dot align center
-                .setLineWidth(2)//dp
-                .setEndText("结束")
-                .setTextSize(14)
-                .setTextColor(Color.parseColor("#673AB7"))
-                //.setBottomRes(R.drawable.ic_ma_1)
-                .setDotPaddingText(2)//dp.The distance between the last dot and the end text
-                .create();
-    }
-
     @Override
     public void onLoadTableResult(List<Flow> result) {
         if (result.size() == 0) {
             mAdapter.remove();
+            timeLine.remove();
         } else {
+            timeLine.replace(result);
             mAdapter.replace(result);
         }
         mPlaceHolderView.triggerOkOrEmpty(result.size() > 0);
@@ -117,8 +107,6 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         TextView mNameTv;
         @BindView(R.id.tv_process)
         TextView mProcessTv;
-        @BindView(R.id.tv_time)
-        TextView mTimeTv;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -129,7 +117,6 @@ public class TaskFragment extends BaseMvpFragment<TaskPresenter>
         protected void onBind(Flow flow) {
             mNameTv.setText(flow.getName());
             mProcessTv.setText("进度：" + getAdapterPosition() + "/" + mAdapter.getItemCount());
-            mTimeTv.setText(DateUtils.date2NormalStr(new Date()));
         }
     }
 }

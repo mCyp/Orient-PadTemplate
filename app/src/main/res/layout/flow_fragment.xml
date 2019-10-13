@@ -12,7 +12,7 @@
         android:paddingEnd="@dimen/len_32"
         android:visibility="gone"/>
 
-    <com.orient.padtemplate.widget.placeholder.EmptyView
+    <com.orient.me.widget.placeholder.EmptyView
         android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
