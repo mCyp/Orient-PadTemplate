@@ -34,6 +34,7 @@
         android:layout_marginTop="174dp"
         android:layout_marginEnd="@dimen/len_20"
         android:elevation="@dimen/len_4"
+        android:outlineProvider="background"
         android:layout_marginBottom="@dimen/len_20"
         android:background="@drawable/list_white_bg" />
 

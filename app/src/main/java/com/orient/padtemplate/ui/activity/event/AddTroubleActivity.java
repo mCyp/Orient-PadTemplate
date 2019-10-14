@@ -23,17 +23,14 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.bumptech.glide.Glide;
 import com.orient.padtemplate.R;
 import com.orient.padtemplate.base.activity.BaseMvpActivity;
-import com.orient.padtemplate.base.app.App;
 import com.orient.padtemplate.base.recyclerview.RecyclerAdapter;
 import com.orient.padtemplate.common.Common;
 import com.orient.padtemplate.contract.presenter.AddTroublePresenter;
 import com.orient.padtemplate.contract.view.AddTroubleView;
 import com.orient.padtemplate.core.data.db.Trouble;
-import com.orient.padtemplate.ui.activity.CameraActivity;
 import com.orient.padtemplate.ui.activity.video.VideoActivity;
 import com.orient.padtemplate.ui.activity.video.VideoPlayerActivity;
 import com.orient.padtemplate.utils.AppPrefUtils;
@@ -116,6 +113,11 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
     ImageView mVideoIv;
     @BindView(R.id.iv_play_start)
     ImageView mStartPlayer;
+    @BindView(R.id.tv_video)
+    TextView mVideoTv;
+    @BindView(R.id.tv_video_compress)
+    TextView mVideoCompressTv;
+
 
     // 文件的存放的地址
     @SuppressWarnings("FieldCanBeLocal")
@@ -176,8 +178,17 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
             id = getIntent().getStringExtra(TROUBLE_ID);
             trouble = mPresenter.searchTroubleById(id);
             path = trouble.getPhotoDirectory();
+            if(!TextUtils.isEmpty(trouble.getVideoPath()) && new File(trouble.getVideoPath()).exists()){
+                currentInputVideoPath = trouble.getVideoPath();
+
+                // 加载视频第一帧和设置播放按钮
+                Glide.with(this)
+                        .load(currentInputVideoPath)
+                        .into(mVideoIv);
+                mStartPlayer.setVisibility(View.VISIBLE);
+            }
             mDesc.setText(trouble.getDesc());
-            // TODO 初始化录音和视频
+            mPositionTv.setText(trouble.getPosition());
         }
         currentOutputVideoPath = PhotoUtils.getTroubleStoragePath(id) + "/out.mp4";
 
@@ -226,6 +237,8 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
         mDesc.setEnabled(false);
         mVoice.setEnabled(false);
         mCamera.setEnabled(false);
+        mVideoIv.setEnabled(false);
+        mVideoCompressTv.setEnabled(false);
     }
 
     // 设置更多的状态
@@ -427,7 +440,7 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
             } else {
                 targetDir = Uri.fromFile(new File(trouble.getAudioPath()));
                 voiceContainer.setVisibility(View.VISIBLE);
-                mVoiceTime.setText(String.format("%ds", trouble.getAudioTime()));
+                mVoiceTime.setText(String.format("%.2f", trouble.getAudioTime()));
             }
         } else {
             voiceContainer.setVisibility(View.GONE);
@@ -467,13 +480,20 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
     @OnClick(R.id.tv_submit)
     public void onSubmit() {
 
-        // TODO 初始化一个用户信息
+        String pos = mPositionTv.getText().toString();
         String desc = mDesc.getText().toString();
+
+        if(TextUtils.isEmpty(pos) || TextUtils.isEmpty(desc)){
+            showToast("位置或者描述信息不能为空！");
+            return;
+        }
+
         if (trouble == null) {
             String userId = AppPrefUtils.getString(Common.Constant.KEY_USER_ID);
             trouble = new Trouble();
             checkPhotoAndAudio();
             trouble.setId(id);
+            trouble.setPosition(pos);
             trouble.setDesc(desc);
             trouble.setUserId(userId);
             trouble.setCreateDate(new Date());

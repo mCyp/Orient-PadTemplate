@@ -25,10 +25,10 @@ public class Trouble {
     private String id;
     private String name; // 故障名称
     private String videoPath; // 视频路径
-    private float videoTime; // 视频时长
+    private double videoTime; // 视频时长
     private String photoDirectory; // 照片的路径
     private String audioPath; // 录音地址
-    private float audioTime; // 录音时长
+    private double audioTime; // 录音时长
     private String desc; // 描述性
     private String position; // 位置
     private Date createDate; // 创建的日期
@@ -47,9 +47,9 @@ public class Trouble {
     @Generated(hash = 1123787452)
     public Trouble() {
     }
-    @Generated(hash = 350868867)
-    public Trouble(String id, String name, String videoPath, float videoTime,
-            String photoDirectory, String audioPath, float audioTime, String desc,
+    @Generated(hash = 1703186249)
+    public Trouble(String id, String name, String videoPath, double videoTime,
+            String photoDirectory, String audioPath, double audioTime, String desc,
             String position, Date createDate, String userId) {
         this.id = id;
         this.name = name;
@@ -177,23 +177,24 @@ public class Trouble {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getTroubleDao() : null;
     }
-    public float getVideoTime() {
-        return this.videoTime;
-    }
-    public void setVideoTime(float videoTime) {
-        this.videoTime = videoTime;
-    }
-    public float getAudioTime() {
-        return this.audioTime;
-    }
-    public void setAudioTime(float audioTime) {
-        this.audioTime = audioTime;
-    }
+    
     public Date getCreateDate() {
         return this.createDate;
     }
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+    public double getVideoTime() {
+        return this.videoTime;
+    }
+    public void setVideoTime(double videoTime) {
+        this.videoTime = videoTime;
+    }
+    public double getAudioTime() {
+        return this.audioTime;
+    }
+    public void setAudioTime(double audioTime) {
+        this.audioTime = audioTime;
     }
 
     

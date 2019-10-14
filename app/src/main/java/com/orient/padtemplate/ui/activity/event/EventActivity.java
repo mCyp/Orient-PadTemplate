@@ -69,6 +69,24 @@ public class EventActivity extends BaseMvpActivity<EventPresenter>
                 return R.layout.delete_reycle_item;
             }
         };
+
+        mRecyclerView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Trouble trouble = mAdapter.getItems().get(position);
+                // 点击事件
+                AddTroubleActivity.show(EventActivity.this,trouble.getId(),false);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                Trouble trouble = mAdapter.getItems().remove(position);
+                // 数据删除
+                mAdapter.notifyItemRemoved(position);
+                trouble.delete();
+            }
+        });
+
         mRecyclerView.setAdapter(mAdapter);
 
         mEmptyView.bind(mRecyclerView);
