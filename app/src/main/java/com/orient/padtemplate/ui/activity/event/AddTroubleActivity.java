@@ -299,7 +299,7 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
             public void setRecordingTipView() {
                 if (mRecordWindow != null) {
                     mStateIV.setVisibility(View.VISIBLE);
-                    mStateIV.setImageResource(R.drawable.ic_volume_1);
+                    mStateIV.setImageResource(R.drawable.audio_ic_volume_1);
                     mStateTV.setVisibility(View.VISIBLE);
                     mStateTV.setText(R.string.voice_rec);
                     mStateTV.setBackgroundResource(R.drawable.audio_bg_voice_popup);
@@ -314,7 +314,7 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
 
                 if (mRecordWindow != null) {
                     mStateTV.setText("录音时间少于1秒");
-                    mStateIV.setImageResource(R.drawable.ic_volume_wraning);
+                    mStateIV.setImageResource(R.drawable.audio_ic_volume_wraning);
                 }
             }
 
@@ -323,7 +323,7 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
                 if (this.mRecordWindow != null) {
                     this.mTimerTV.setVisibility(View.GONE);
                     this.mStateIV.setVisibility(View.VISIBLE);
-                    this.mStateIV.setImageResource(R.drawable.ic_volume_cancel);
+                    this.mStateIV.setImageResource(R.drawable.audio_ic_volume_cancel);
                     this.mStateTV.setVisibility(View.VISIBLE);
                     this.mStateTV.setText(R.string.voice_cancel);
                     this.mStateTV.setBackgroundResource(R.drawable.audio_bg_voice_style);
@@ -366,28 +366,28 @@ public class AddTroubleActivity extends BaseMvpActivity<AddTroublePresenter>
             public void onAudioDBChanged(int db) {
                 switch (db / 5) {
                     case 0:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_1);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_1);
                         break;
                     case 1:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_2);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_2);
                         break;
                     case 2:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_3);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_3);
                         break;
                     case 3:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_4);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_4);
                         break;
                     case 4:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_5);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_5);
                         break;
                     case 5:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_6);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_6);
                         break;
                     case 6:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_7);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_7);
                         break;
                     default:
-                        this.mStateIV.setImageResource(R.drawable.ic_volume_8);
+                        this.mStateIV.setImageResource(R.drawable.audio_ic_volume_8);
                 }
             }
         });
